@@ -51,7 +51,7 @@ class ProductCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @product_category.update(product_category_params)
-        format.html { redirect_to @product_category, notice: 'A categoria ' +  @product_category.name + 'foi atualizada com sucesso.' }
+        format.html { redirect_to @product_category, notice: 'A categoria ' +  @product_category.name + ' foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @product_category }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class ProductCategoriesController < ApplicationController
   def destroy
     @product_category.destroy
     respond_to do |format|
-      format.html { redirect_to product_categories_url, notice: 'A categoria ' +  @product_category.name + 'foi removida com sucesso.' }
+      format.html { redirect_to product_categories_url, notice: 'A categoria ' +  @product_category.name + ' foi removida com sucesso.' }
       format.json { head :no_content }
     end
   end
