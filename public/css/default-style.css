@@ -1,0 +1,95 @@
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #ffde1f;
+}
+
+.btn-orange,
+.btn-orange:hover
+{
+    color: #fff;
+    background-color: #ffa61a;
+}
+
+.input-group-addon
+{
+    background-color: #ffa61a;
+    border: none;
+}
+
+.page-header
+{
+    color: #ffa61a;
+    font-weight: bolder;
+    border-bottom: 1px solid #fff;
+}
+
+.page-header small
+{
+    color: #fff;
+}
+
+.icon
+{
+    color: #000;
+}
+
+.table .icon
+{
+ cursor: pointer;
+}
+
+.table tfoot td
+{
+    font-weight: bold;
+}
+
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th
+{
+    border: none;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) 
+{
+    background-color: rgb(255,166,26, 0.3);
+}
+
+.table .number
+{
+    text-align: right;
+}
+
+.pagination>li>a, 
+.pagination>li>span,
+.pagination>li>a:hover,
+.pagination>li>a:active,
+.pagination>li>a:focus
+{
+    background-color: #ffa61a;
+    color: #fff;
+    border: 2px solid rgb(255,180,26, 0.7);
+}
+
+footer
+{
+	color: #fff;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+footer hr
+{
+	border-top: 1px solid #fff;
+}

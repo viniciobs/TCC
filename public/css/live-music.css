@@ -1,0 +1,54 @@
+.music-list
+{
+	margin: 2em;
+}
+
+.music-list .music
+{
+	padding: 1em 0;
+}
+
+.music-list .music span.band
+{
+	color: #fff;
+	font-weight: bold;
+	display: block;
+}
+
+.music-list .music span.title
+{
+	font-size: 1.5em;
+}
+
+.music-list .music-info
+{
+	padding:8px;
+}
+
+.music-list .music-rate
+{
+	padding: 12px;
+}
+
+textarea 
+{
+  resize: none;
+}
+
+@media screen and (min-width:768px)
+{	
+	.music-info
+	{
+		text-align: right;
+	}
+}
+
+@media screen and (max-width:767px)
+{
+	.music
+	{
+		text-align: center;
+        margin-bottom: 2em;
+        border-bottom: 1px solid #fff;
+	}   
+}

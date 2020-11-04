@@ -1,0 +1,63 @@
+.food-menu
+{
+	text-align: center;
+}
+
+.food-menu .item a
+{
+	background-color: #fff;
+	color: #bc821d;
+	font-size: 1.3em;
+	padding: 0.5em 1.5em;
+	border: 1px solid #bc821d;
+	text-decoration: none;
+	display: block;
+}
+
+.food-menu .item a:hover,
+.food-menu .item a.active
+{
+	color: #fff;
+	background-color: #bc821d;
+}
+
+h3.title
+{
+    border-bottom: 1px dashed #707070;
+    padding-bottom: 0.5em;
+}
+
+.price
+{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffa61a;
+}
+
+.menu-item
+{
+    margin-top:2.5em;
+}
+
+.item-quantity
+{
+    max-width: 120px;
+}
+
+.item-quantity input
+{
+    text-align: center;
+}
+
+.item-quantity span
+{
+    cursor: pointer;
+}
+
+@media screen and (max-width:767px)
+{
+	.menu-item
+	{
+        margin-bottom: 7em;       
+	}   
+}

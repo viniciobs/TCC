@@ -1,0 +1,114 @@
+.menu-container
+{
+	background-color: #ffa61a;
+	min-height: 4em;
+}
+
+.menu-container ul li
+{
+	list-style-type: none;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+
+.menu-container .nav
+{
+	width: 100%;
+	z-index: 10;
+}
+
+.menu-container ul#menu
+{
+	display: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu-container ul#menu li a
+{
+	width: 100%;
+	display: block;
+	color: #fff;
+	font-size: 1.5em;
+	padding: 1em 0.5em;
+	transition: background 0.2s;
+	text-decoration: none;
+}
+
+.menu-container ul#menu li:hover,
+.menu-container ul#menu li.active
+{
+	background-color: #bc821d;
+}
+
+@media screen and (min-width: 1280px)
+{
+	.menu-container .menu-hamburguer-container
+	{
+		display: none;
+	}
+
+	.menu-container .nav ul#menu
+	{
+		display: inline;
+	}
+
+	.menu-container .nav ul#menu li
+	{
+		display: inline-block;
+		margin-right: -5px;
+	}
+}
+
+.menu-container ul.menu-hamburguer li
+{
+	height: 5px;
+	background: #fff;
+	content: "";
+	position: relative;
+	transition: 0.25s ease-in-out;
+}
+
+.menu-container .hidden
+{
+	opacity: 0;
+}
+
+.menu-container .rot45deg
+{
+	transform: rotate(45deg);
+	top: 10px !important;
+}
+
+.menu-container .rot-45deg
+{
+	transform: rotate(-45deg);
+}
+
+.menu-container ul.menu-hamburguer
+{
+	display: block;
+}
+
+.menu-container ul.menu-hamburguer li:nth-child(1)
+{
+	top: 0;
+}
+
+.menu-container ul.menu-hamburguer li:nth-child(2)
+{
+	top: 5px;
+}
+
+.menu-container ul.menu-hamburguer li:nth-child(3)
+{
+	top: 10px;
+}
+
+.menu-container .menu-hamburguer-container
+{
+	width: 50px;
+	margin: 1.2em 1.6em;
+	cursor: pointer;
+	float: right;
+}

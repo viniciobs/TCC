@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Conexão Boteco</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="manifest" href="../../../manifest.json">
+    <link rel="stylesheet" href="../../../lib/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="../../../images/icons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../../../images/icons/152px-icon.png">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="white"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ffa61a">
+    <meta name="apple-mobile-web-app-title" content="Conexão Boteco">
+    <meta name="msapplication-TileImage" content="../images/icons/144px-icon.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+
+    <div class="container body-content">
+        <footer class="container">
+            <hr>
+            <p>© 2020 - Conexão Boteco</p>
+        </footer>
+    </div>
+        
+  </body>
+</html>
+
+
+
+       
+        
+      
