@@ -1,6 +1,10 @@
-<h1>Editing Product</h1>
+<% @page_title =  @product.name + " - Edição"%>
 
-<%= render 'form', product: @product %>
+<div class="container">
+	<div class="page-header" align="center">
+	    <h1>Gerenciamento de produtos<br><small>Edite detalhes do produto</small></h1>
+	</div>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+	<%= render 'form', product: @product %>
+
+</div>

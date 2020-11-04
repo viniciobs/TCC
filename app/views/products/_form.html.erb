@@ -1,7 +1,7 @@
 <%= form_with(model: product, local: true) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2><%= pluralize(product.errors.count, "error") %> erros encontrados:</h2>
 
       <ul>
         <% product.errors.full_messages.each do |message| %>
@@ -11,22 +11,33 @@
     </div>
   <% end %>
 
+<div class="form-row">
+  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, "Nome" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Nome do produto"  %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+</div>
+</div>
 
   <div class="field">
     <%= form.label :price %>
     <%= form.text_field :price %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-row">
+  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="field">
+    <%= form.label :description, "Descrição" %>
+    <%= form.text_area :description, class: "form-control", placeholder: "Deixe aqui a descrição do produto" %>
   </div>
+  </div>  
+</div>
+
+  <div class="form-row">
+  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 actions">
+    <%= form.submit "Salvar", class: "btn btn-orange right" %>
+    <%= link_to 'Cancelar', products_path, class: "right btn btn-orange" %>
+  </div>
+</div>
 <% end %>
