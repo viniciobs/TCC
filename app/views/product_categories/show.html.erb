@@ -5,10 +5,11 @@
 	    <h1>Detalhes da categoria<br><small>Visualize os detalhes da categoria</small></h1>
 	</div>
 
-
 	<p id="notice"><%= notice %></p>
 
-	<p class="edit">
+
+<div class="edit">
+	<p>
 	  <strong>Categoria:</strong>
 	  <%= @product_category.name %>
 	  <%= link_to edit_product_category_path(@product_category) do%>
@@ -17,6 +18,7 @@
               </svg>
 	  <%end%>
 	</p>
+</div>	
 
 	<%= link_to 'Voltar', product_categories_path, class: "btn btn-orange right" %>
 </div>
