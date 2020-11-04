@@ -54,7 +54,7 @@ body
 .table .icon,
 .edit .icon
 {
- cursor: pointer;
+    cursor: pointer;
 }
 
 .table tfoot td
@@ -81,6 +81,11 @@ body
 .table .icons
 {
     text-align: right;
+}
+
+.table .icons
+{
+    min-width: 70px;
 }
 
 .pagination>li>a, 

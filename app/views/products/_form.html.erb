@@ -22,9 +22,9 @@
 
 <div class="form-row">
   <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
-    <div class="field">
-    <%= form.label :product_type, "Tipo" %>
-    <%= form.text_field :product_type, class: "form-control" %>
+    <div class="field">      
+    <%= form.label :product_category_id, "Categoria" %>
+    <%= form.collection_select :product_category_id, ProductCategory.all, :id, :name, {prompt: "-- Selecione a categoria -- "}, { class: "form-control" } %>
   </div>
   </div>
   <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -32,22 +32,18 @@
     <%= form.label :price, "Preço" %>
     <div class="input-group item-quantity">
       <span class="input-group-addon">R$</span>
-      <%= form.text_field :price, class: "form-control", placeholder:"0,00" %>
+      <%= form.text_field :price, class: "form-control", placeholder: "0,00" %>
     </div>
     
   </div>
   </div>
 </div>
 
-
-
-  
-
   <div class="form-row">
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="field">
     <%= form.label :description, "Descrição" %>
-    <%= form.text_area :description, class: "form-control", placeholder: "Deixe aqui a descrição do produto" %>
+    <%= form.text_area :description, class: "form-control", placeholder: "Deixe aqui a descrição do produto", rows: 5 %>
   </div>
   </div>  
 </div>
