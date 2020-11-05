@@ -12,11 +12,6 @@ class StocksController < ApplicationController
   def show
   end
 
-  # GET /stocks/new
-  def new
-    @stock = Stock.new
-  end
-
   # GET /stocks/1/edit
   def edit
   end
@@ -42,7 +37,7 @@ class StocksController < ApplicationController
   def update
     respond_to do |format|
       if @stock.update(stock_params)
-        format.html { redirect_to @stock, notice: 'Item ' + @stock.product.name + ' foi atualizado com sucesso.' }
+        format.html { redirect_to @stock, notice: 'Item ' + Product.find(@stock.product_id).name + ' foi atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @stock }
       else
         format.html { render :edit }

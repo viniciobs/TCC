@@ -46,6 +46,16 @@ body
     color: #fff;
 }
 
+.link, 
+.link:hover,
+.link:active,
+.link:focus
+{
+    color: #ffa61a;
+    text-decoration: none;
+    font-size: 20px;
+}
+
 .icon
 {
     color: #000;

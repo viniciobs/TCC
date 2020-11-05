@@ -1,6 +1,10 @@
-<h1>Editing Stock</h1>
+<% @page_title =  Product.find(@stock.product_id).name + " - Edição de estoque"%>
+
+<div class="container">
+	<div class="page-header" align="center">
+	    <h1>Gerenciamento de estoque<br><small>Edite a quantidade de itens disponível em estoque</small></h1>
+	</div>
 
 <%= render 'form', stock: @stock %>
 
-<%= link_to 'Show', @stock %> |
-<%= link_to 'Back', stocks_path %>
+</div>
