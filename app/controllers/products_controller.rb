@@ -28,8 +28,17 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: @product.name + ' criado com sucesso.' }
-        format.json { render :show, status: :created, location: @product }
+
+        @stock = Stock.new
+        @stock.product_id = @product.id
+
+        if @stock.save        
+          format.html { redirect_to @product, notice: @product.name + ' criado com sucesso.' }
+          format.json { render :show, status: :created, location: @product }
+        else        
+          format.html { render :new }
+          format.json { render json: @stock.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -54,7 +63,11 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
+    @product.destroy   
+    
+    @stock = Stock.where(product_id: params[:id]).first
+    @stock.destroy
+
     respond_to do |format|
       format.html { redirect_to products_url, notice: @product.name + ' removido com sucesso.' }
       format.json { head :no_content }

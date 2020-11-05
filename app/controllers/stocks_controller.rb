@@ -42,7 +42,7 @@ class StocksController < ApplicationController
   def update
     respond_to do |format|
       if @stock.update(stock_params)
-        format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
+        format.html { redirect_to @stock, notice: 'Item ' + @stock.product.name + ' foi atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @stock }
       else
         format.html { render :edit }
@@ -53,10 +53,13 @@ class StocksController < ApplicationController
 
   # DELETE /stocks/1
   # DELETE /stocks/1.json
-  def destroy
+  def destroy    
     @stock.destroy
+    @product = Product.where(id: @stock.product_id).first
+    @product.destroy
+
     respond_to do |format|
-      format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
+      format.html { redirect_to stocks_url, notice: 'Item ' + @product.name + ' foi removido com sucesso.' }
       format.json { head :no_content }
     end
   end
