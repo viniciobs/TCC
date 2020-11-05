@@ -26,6 +26,15 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+    if exists @product.name 
+      respond_to do |format|
+        flash.now[:notice] = "Já existe um produto cadastrado com este nome."
+        format.html { render :edit }      
+      end
+
+      return
+    end
+
     respond_to do |format|
       if @product.save  
 
@@ -65,10 +74,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy   
-    
-    @stock = Stock.where(product_id: params[:id]).first
-    @stock.destroy
-
+        
     respond_to do |format|
       format.html { redirect_to products_url, notice: @product.name + ' removido com sucesso.' }
       format.json { head :no_content }
@@ -84,5 +90,9 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :description, :price, :product_category_id)
+    end
+
+    def exists product_name
+      return Product.any?{|x| x.name == product_name}
     end
 end
