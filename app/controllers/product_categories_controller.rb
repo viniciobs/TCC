@@ -62,12 +62,15 @@ class ProductCategoriesController < ApplicationController
 
   # DELETE /product_categories/1
   # DELETE /product_categories/1.json
-  def destroy
-    @product_category.destroy
+  def destroy    
+    
+
+    message = @product_category.destroy ? 'A categoria ' +  @product_category.name + ' foi removida com sucesso.' : 'Ocorreram erros que impediram a categoria de ser removida.'
+
     respond_to do |format|
-      format.html { redirect_to product_categories_url, notice: 'A categoria ' +  @product_category.name + ' foi removida com sucesso.' }
+      format.html { redirect_to product_categories_url, notice: message }
       format.json { head :no_content }
-    end
+    end    
   end
 
   private

@@ -49,9 +49,10 @@ class StocksController < ApplicationController
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy    
-    @stock.destroy
+    @stock.delete
+    
     @product = Product.where(id: @stock.product_id).first
-    @product.destroy
+    @product.delete
 
     respond_to do |format|
       format.html { redirect_to stocks_url, notice: 'Item ' + @product.name + ' foi removido com sucesso.' }
