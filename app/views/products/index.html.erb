@@ -48,6 +48,10 @@
   </tbody>
 </table>
 
+ <% if @products.empty? %>
+  <p class="text-center">Não há nenhum produto cadastrado.</p>
+  <%end%>
+
 <br>
 
 <%= link_to 'Incluir novo produto', new_product_path, class: "btn btn-orange right" %>

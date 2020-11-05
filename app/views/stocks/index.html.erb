@@ -39,5 +39,9 @@
     <% end %>
   </tbody>
 </table>
+  
+  <% if @stocks.empty? %>
+  <p class="text-center">Não há nenhum produto cadastrado para o estoque.</p>
+  <%end%>
 </div>
 

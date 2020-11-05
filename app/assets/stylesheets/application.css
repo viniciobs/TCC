@@ -20,6 +20,11 @@ body
     float:left;
 }
 
+.text-center
+{
+    text-align: center;
+}
+
 .btn-orange,
 .btn-orange:hover
 {
