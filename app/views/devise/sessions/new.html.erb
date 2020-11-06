@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag "login" %>
+
+  <div class="text-center">
+  <%= image_tag("loading.gif", height: 150) %>
+
+<center>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<h1 class="h3 mb-3 font-weight-normal">Conexão Boteco</h1>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Login"  %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, class: "form-control", placeholder: "Senha"  %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field right">
+      <%= f.check_box :remember_me  %>
+      <%= f.label :remember_me, "Lembrar-me" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Acessar", class: "btn btn-orange btn-lg btn-block" %>
+  </div>
+<% end %>
+</center>
+
+</div>
+
+
+
