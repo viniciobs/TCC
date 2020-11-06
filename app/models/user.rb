@@ -1,8 +1,14 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  	attr_accessor :username
 
-  enum user_type: { manager: 0, musician: 1, customer: 2 }
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+
+  	enum user_type: { manager: 0, musician: 1, customer: 2 }
+
+  	def email_required?
+  		false
+  	end
+  
 end

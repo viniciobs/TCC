@@ -5,15 +5,16 @@
   <%= image_tag("loading.gif", height: 150) %>
 
 <center>
+<%= render "devise/shared/error_messages", resource: resource %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <h1 class="h3 mb-3 font-weight-normal">Conexão Boteco</h1>
 
   <div class="field">
-    <%= f.text_field :login, autofocus: true, class: "form-control", placeholder: "Login"  %>
+    <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: "Login", required: true  %>
   </div>
 
   <div class="field">
-    <%= f.password_field :password, class: "form-control", placeholder: "Senha"  %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Senha", required: true   %>
   </div>
 
   <% if devise_mapping.rememberable? %>
