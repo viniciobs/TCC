@@ -12,7 +12,8 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Descrição</th>
+      <th>Categoria</th>
+      <th>Descrição</th>    
       <th class="number">Valor (R$)</th>
       <th></th>
     </tr>
@@ -22,6 +23,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
+        <td><%= product.product_category.name %></td>
         <td><%= product.description %></td>
         <td class="number"><%= number_with_precision(product.price, precision: 2) %></td>
         <td class="icons">
