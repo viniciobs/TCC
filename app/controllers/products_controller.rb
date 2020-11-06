@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   def index  
     @products = Product.all
     @products = @products.filter_by_category(params[:category]) if params[:category].present?
+    @products = @products.filter_by_name(params[:name]) if params[:name].present?
     @products = @products.paginate(:page => params[:page], :per_page => 10)
   end
 
