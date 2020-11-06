@@ -12,6 +12,7 @@
   <thead>
     <tr>
       <th>Produto</th>
+      <th>Categoria</th>
       <th class='number'>Quantidade</th>
       <th></th>
     </tr>
@@ -19,8 +20,10 @@
 
   <tbody>
     <% @stocks.each do |stock| %>
+    <% @product = Product.find(stock.product_id) %>
       <tr>
-        <td><%= Product.find(stock.product_id).name %></td>
+        <td><%= @product.name %></td>
+        <td><%= @product.product_category.name %></td>
         <td class="number"><%= stock.quantity.blank? ? "Não informado" : stock.quantity  %></td>
         <td class="icons">            
             <%= link_to edit_stock_path(stock) do %>
@@ -43,5 +46,10 @@
   <% if @stocks.empty? %>
   <p class="text-center">Não há nenhum produto cadastrado para o estoque.</p>
   <%end%>
+
+  <center>
+<%= will_paginate @stocks, :previous_label => '«', :next_label => '»' %>  
+</center>
+
 </div>
 

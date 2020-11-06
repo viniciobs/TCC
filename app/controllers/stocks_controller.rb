@@ -4,7 +4,7 @@ class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
   def index
-    @stocks = Stock.all
+    @stocks = Stock.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /stocks/1

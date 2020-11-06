@@ -54,6 +54,11 @@
   <p class="text-center">Não há nenhum produto cadastrado.</p>
   <%end%>
 
+<center>
+<%= will_paginate @products, :previous_label => '«', :next_label => '»' %>  
+</center>
+
+
 <br>
 
 <%= link_to 'Incluir novo produto', new_product_path, class: "btn btn-orange right" %>
