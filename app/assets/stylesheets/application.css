@@ -103,6 +103,11 @@ body
     min-width: 70px;
 }
 
+.pagination .current
+{
+    background: rgb(255,180,26, 0.7);
+}
+
 .pagination .previous_page
 {
     border-top-left-radius: 4px;
