@@ -51,6 +51,25 @@ body
     color: #fff;
 }
 
+.filter
+{
+    display: flow-root;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+}
+
+.filter .form-group
+{
+    padding-left: 0px;
+    padding-right: 5px;
+}
+
+.filter button
+{
+    width: 100%;
+}
+
 .link, 
 .link:hover,
 .link:active,
