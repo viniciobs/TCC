@@ -27,7 +27,7 @@
       "type": "image/png"
     }],
     "lang": "pt-BR",
-    "start_url": "menu.html",
+    "start_url": "https://conexao-boteco.herokuapp.com/",
     "display": "standalone",
     "background_color": "#ffde1f",
     "theme_color": "#ffa61a"
