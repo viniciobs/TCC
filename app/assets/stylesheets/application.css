@@ -18,6 +18,8 @@ a:hover
     text-decoration: none;
 }
 
+table td a { color: #000; }
+
 #menu { color: #fff; }
 #menu strong { display: block; }
 
