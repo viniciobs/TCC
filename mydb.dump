@@ -1,0 +1,430 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.4
+-- Dumped by pg_dump version 12.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: nicio
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO nicio;
+
+--
+-- Name: product_categories; Type: TABLE; Schema: public; Owner: nicio
+--
+
+CREATE TABLE public.product_categories (
+    id bigint NOT NULL,
+    name character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.product_categories OWNER TO nicio;
+
+--
+-- Name: product_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: nicio
+--
+
+CREATE SEQUENCE public.product_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.product_categories_id_seq OWNER TO nicio;
+
+--
+-- Name: product_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nicio
+--
+
+ALTER SEQUENCE public.product_categories_id_seq OWNED BY public.product_categories.id;
+
+
+--
+-- Name: products; Type: TABLE; Schema: public; Owner: nicio
+--
+
+CREATE TABLE public.products (
+    id bigint NOT NULL,
+    name character varying,
+    description character varying,
+    price numeric,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    product_category_id integer
+);
+
+
+ALTER TABLE public.products OWNER TO nicio;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: nicio
+--
+
+CREATE SEQUENCE public.products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.products_id_seq OWNER TO nicio;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nicio
+--
+
+ALTER SEQUENCE public.products_id_seq OWNED BY public.products.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: nicio
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO nicio;
+
+--
+-- Name: stocks; Type: TABLE; Schema: public; Owner: nicio
+--
+
+CREATE TABLE public.stocks (
+    id bigint NOT NULL,
+    product_id integer,
+    quantity integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.stocks OWNER TO nicio;
+
+--
+-- Name: stocks_id_seq; Type: SEQUENCE; Schema: public; Owner: nicio
+--
+
+CREATE SEQUENCE public.stocks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.stocks_id_seq OWNER TO nicio;
+
+--
+-- Name: stocks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nicio
+--
+
+ALTER SEQUENCE public.stocks_id_seq OWNED BY public.stocks.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: nicio
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    email character varying DEFAULT ''::character varying,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    username character varying NOT NULL,
+    user_type integer NOT NULL,
+    name character varying NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO nicio;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: nicio
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO nicio;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nicio
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: product_categories id; Type: DEFAULT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.product_categories ALTER COLUMN id SET DEFAULT nextval('public.product_categories_id_seq'::regclass);
+
+
+--
+-- Name: products id; Type: DEFAULT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.products_id_seq'::regclass);
+
+
+--
+-- Name: stocks id; Type: DEFAULT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.stocks ALTER COLUMN id SET DEFAULT nextval('public.stocks_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: nicio
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2020-11-04 16:29:38.175545	2020-11-04 16:29:38.175545
+\.
+
+
+--
+-- Data for Name: product_categories; Type: TABLE DATA; Schema: public; Owner: nicio
+--
+
+COPY public.product_categories (id, name, created_at, updated_at) FROM stdin;
+16	Bebidas	2020-11-06 19:19:28.185123	2020-11-06 19:19:28.185123
+17	Entradas	2020-11-06 19:19:36.703031	2020-11-06 19:19:36.703031
+18	Massas	2020-11-06 19:19:56.607999	2020-11-06 19:19:56.607999
+19	Carnes	2020-11-06 19:20:04.34145	2020-11-06 19:20:04.34145
+20	Sobremesas	2020-11-06 19:20:22.890704	2020-11-06 19:20:22.890704
+21	Infantil	2020-11-06 19:20:30.352438	2020-11-06 19:20:30.352438
+\.
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: nicio
+--
+
+COPY public.products (id, name, description, price, created_at, updated_at, product_category_id) FROM stdin;
+26	Coca-Cola 300ml	Coca-cola lata. Acompanha gelo e limão - opcional	6.0	2020-11-06 19:21:06.324818	2020-11-06 19:21:06.324818	16
+27	Água mineral	Copo de água da casa. Gelado ou natural	0.0	2020-11-06 19:21:59.524984	2020-11-06 19:21:59.524984	16
+28	Heineken 600ml		10.0	2020-11-06 19:22:42.582443	2020-11-06 19:22:42.582443	16
+29	Brahma 600ml		6.0	2020-11-06 19:22:59.176379	2020-11-06 19:22:59.176379	16
+30	Suco Uva 1l - natural		7.0	2020-11-06 19:23:18.566085	2020-11-06 19:23:18.566085	16
+31	Suco Uva 300ml - natural		4.0	2020-11-06 19:23:38.727832	2020-11-06 19:23:38.727832	16
+32	Dell Vale 300ml - Pêssego		6.0	2020-11-06 19:24:01.707707	2020-11-06 19:24:01.707707	16
+33	Dell Vale 300ml - Maracujá		6.0	2020-11-06 19:24:16.745688	2020-11-06 19:24:16.745688	16
+34	Dell Vale 300ml - Uva		6.0	2020-11-06 19:24:35.580373	2020-11-06 19:24:35.580373	16
+35	Suco Laranja 1l - natural	Gelado ou temperatura ambiente. Sem adição de açúcar	10.0	2020-11-06 19:25:16.14585	2020-11-06 19:25:16.14585	16
+36	Coca-Cola 1l	Garrafa de vidro. Acompanha gelo e limão. 	9.0	2020-11-06 19:25:54.813073	2020-11-06 19:25:54.813073	16
+37	Guaraná Antártica 1l 	Garrafa de vidro. Acompanha laranja e gelo.\r\n	10.0	2020-11-06 19:26:32.035451	2020-11-06 19:26:32.035451	16
+38	Suco Maracujá 1l - natural	Gelado ou temperatura ambiente. Sem adição de aúcar.	10.0	2020-11-06 19:27:09.684073	2020-11-06 19:27:09.684073	16
+39	Chá gelado Pêssego 300ml - Pêssego	Ice Tea	10.0	2020-11-06 19:28:02.061203	2020-11-06 19:28:02.061203	16
+40	Pizza Brotinho - Frango com catupiry	Borda recheada de requeijão	15.0	2020-11-06 19:28:58.048414	2020-11-06 19:28:58.048414	18
+41	Pizza Brotinho - 4 queijos	Mussarela, provolone, catupiry e cheddar. Borda recheada com cheddar.	15.0	2020-11-06 19:30:04.554638	2020-11-06 19:30:04.554638	18
+42	Pastéis 5 unidades - Palmito		20.0	2020-11-06 19:30:35.873365	2020-11-06 19:30:35.873365	17
+43	Pastel - un. Frango com catupiry		3.5	2020-11-06 19:31:08.041611	2020-11-06 19:31:08.041611	17
+44	Pudim de doce de leite		7.0	2020-11-06 19:31:41.337799	2020-11-06 19:31:41.337799	20
+45	Sorvete taça 30ml	Sabores: creme, flocos, morango, chocolate ou negresco.	6.0	2020-11-06 19:32:18.104623	2020-11-06 19:32:18.104623	20
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nicio
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20201104162421
+20201104162456
+20201104162544
+20201104183752
+20201104214845
+20201104215446
+20201105014844
+20201106004548
+20201106030918
+20201106031548
+20201106162220
+20201106165143
+20201107015642
+20201107015829
+\.
+
+
+--
+-- Data for Name: stocks; Type: TABLE DATA; Schema: public; Owner: nicio
+--
+
+COPY public.stocks (id, product_id, quantity, created_at, updated_at) FROM stdin;
+22	26	30	2020-11-06 19:21:06.38088	2020-11-06 19:21:13.001958
+23	27	1000	2020-11-06 19:21:59.531198	2020-11-06 19:22:04.377748
+41	45	20	2020-11-06 19:32:18.109865	2020-11-06 19:32:26.668953
+24	28	30	2020-11-06 19:22:42.588359	2020-11-06 19:32:36.415503
+33	37	35	2020-11-06 19:26:32.039921	2020-11-06 19:32:46.714294
+27	31	12	2020-11-06 19:23:38.735006	2020-11-06 19:32:52.174168
+25	29	20	2020-11-06 19:22:59.222079	2020-11-06 19:32:57.025647
+29	33	50	2020-11-06 19:24:16.749484	2020-11-06 19:33:02.536137
+31	35	100	2020-11-06 19:25:16.149847	2020-11-06 19:33:06.634798
+36	40	12	2020-11-06 19:28:58.05305	2020-11-06 19:33:10.637933
+32	36	13	2020-11-06 19:25:54.819424	2020-11-06 19:33:14.437926
+28	32	12	2020-11-06 19:24:01.712456	2020-11-06 19:33:18.399292
+39	43	100	2020-11-06 19:31:08.04527	2020-11-06 19:33:22.241302
+37	41	12	2020-11-06 19:30:04.559995	2020-11-06 19:33:28.742547
+26	30	20	2020-11-06 19:23:18.572939	2020-11-06 19:33:33.974804
+34	38	12	2020-11-06 19:27:09.688381	2020-11-06 19:33:37.609565
+35	39	100	2020-11-06 19:28:02.06494	2020-11-06 19:33:42.167934
+30	34	10	2020-11-06 19:24:35.585174	2020-11-06 19:33:46.516257
+40	44	120	2020-11-06 19:31:41.341633	2020-11-06 19:33:51.327777
+38	42	100	2020-11-06 19:30:35.878332	2020-11-06 19:33:54.984238
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nicio
+--
+
+COPY public.users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, created_at, updated_at, username, user_type, name) FROM stdin;
+3		$2a$12$wziXDf3wkBKAW8F.yvWGbep4BO6Y6RmFSIIGuAeVlVBIye6fKv4ye	\N	\N	\N	2020-11-06 17:26:43.208919	2020-11-07 01:59:47.175909	vinicio	0	Vinício
+\.
+
+
+--
+-- Name: product_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nicio
+--
+
+SELECT pg_catalog.setval('public.product_categories_id_seq', 21, true);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nicio
+--
+
+SELECT pg_catalog.setval('public.products_id_seq', 45, true);
+
+
+--
+-- Name: stocks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nicio
+--
+
+SELECT pg_catalog.setval('public.stocks_id_seq', 41, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nicio
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 4, true);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: product_categories product_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.product_categories
+    ADD CONSTRAINT product_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: stocks stocks_pkey; Type: CONSTRAINT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.stocks
+    ADD CONSTRAINT stocks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: nicio
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: nicio
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: index_users_on_username; Type: INDEX; Schema: public; Owner: nicio
+--
+
+CREATE UNIQUE INDEX index_users_on_username ON public.users USING btree (username);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
