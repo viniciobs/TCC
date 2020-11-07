@@ -10,6 +10,53 @@ body
 	background-color: #ffde1f;
 }
 
+a,
+a:focus,
+a:hover
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+.panel 
+{
+    background: #ffa61a;
+    z-index: 9999;
+    position: fixed;
+    left: -15.625em;
+    width: 15.625em;  
+    top: 0px;
+    bottom: 0px;
+    height: 100%;    
+    transition: left 300ms ease 0s;
+}
+
+.menu-link
+{
+    background: #ffa61a;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+.wrap 
+{
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.relative
+{
+    position: relative;
+}
+
+.master-head
+{    
+    margin: 3em 3em;
+}
+
 .right
 {
     float: right;
