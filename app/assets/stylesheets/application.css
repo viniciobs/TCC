@@ -37,6 +37,8 @@ a:hover
     border-top: 1px solid #fff;
 }
 
+#menu ul li:hover { background-color: #bc821d; }
+
 #menu a.log-out
 { 
     background-color: rgb(255,180,26, 0.7);
