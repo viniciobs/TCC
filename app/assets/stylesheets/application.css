@@ -18,6 +18,27 @@ a:hover
     text-decoration: none;
 }
 
+#menu { color: #fff; }
+#menu strong { display: block; }
+
+#menu span
+{
+    background-color: #bc821d;
+    padding: 1em 2em;
+    display: block;
+    margin: -1px;
+}
+
+#menu a.log-out
+{ 
+    background-color: rgb(255,180,26, 0.7);
+    bottom: 0px;
+    position: absolute;
+    padding: 2em 3em;
+    text-align: center;
+    width: 100%;
+}
+
 .panel 
 {
     background: #ffa61a;
@@ -54,23 +75,13 @@ a:hover
 
 .master-head
 {    
-    margin: 3em 3em;
+    margin: 3em 3em 0;
 }
 
-.right
-{
-    float: right;
-}
+.right { float: right; }
+.left { float:left; }
 
-.left
-{
-    float:left;
-}
-
-.text-center
-{
-    text-align: center;
-}
+.text-center{ text-align: center; }
 
 .btn-orange,
 .btn-orange:hover
