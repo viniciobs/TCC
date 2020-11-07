@@ -29,12 +29,14 @@
     
         <nav id="menu" class="panel" role="navigation">           
             <span>Olá, <strong><%= current_user.name %></strong></span>
-            <ul>                
-                <li><a href="#">Home</a></li>
-                <li><a href="#">The Ballad of El Goodo</a></li>
-                <li><a href="#">Thirteen</a></li>
-                <li><a href="#">September Gurls</a></li>
-                <li><a href="#">What's Going Ahn</a></li>
+            <ul>    
+
+               <% if current_user.user_type == "manager" %> 
+                   <li><%= link_to 'Produtos', products_path %></li>  
+                   <li><%= link_to 'Categorias de produto', product_categories_path %></li>  
+                   <li><%= link_to 'Estoque', stocks_path %></li> 
+               <%end%>
+                
             </ul>
             <%= link_to('Sair', destroy_user_session_path, method: :delete, class: "log-out") %>    
         </nav>
