@@ -25,10 +25,12 @@ input
     margin-top: 3px;
 }
 
-a.back-to-index
+.new
 {
-    color: #bc821d;
-    float: right;
+    color: #ffa61a;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 2px;
 }
 
 footer hr

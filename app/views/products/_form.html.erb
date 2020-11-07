@@ -48,6 +48,20 @@
   </div>  
 </div>
 
+<div class="form-row">
+  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="field">
+    <%= form.label :image, "Imagem" %><br>
+    <%= form.file_field :image %>
+    <% if form.object.image? %>
+      <%= image_tag form.object.image.thumb.url %>
+      <%= form.label :remove_image, "Remover imagem" %>
+      <%= form.check_box :remove_image, class: "form-control" %> 
+    <% end %>
+  </div>
+</div>
+</div>
+
   <div class="form-row">
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 actions">
     <%= form.submit "Salvar", class: "btn btn-orange right" %>

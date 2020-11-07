@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   devise_scope :user do
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   	end
   end
 
+  resources :users
   resources :stocks
   resources :products
   resources :product_categories
