@@ -15,7 +15,7 @@
         <%= text_field_tag 'name', params[:name], :class => "form-control", :placeholder => "Buscar por nome ou login" %>
       </div>
        <div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12">
-         <%= select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Administrador', 0], ['Músico', 1], ['Cliente', 2]]), {}, {class: "form-control"})  %>
+         <%= select_tag(:type, options_for_select([['-- Selecione o tipo --', nil], ['Administrador', 0], ['Músico', 1], ['Cliente', 2]]), class: "form-control")  %>
       </div>
       <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12 actions">
          <%= button_tag :class => "btn btn-orange" do %>            
@@ -43,7 +43,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.username %></td>
+        <td><%= user.access %></td>
         <td><%= user.type_description %></td>
         <td class="icons">
             <%= link_to user do%>
@@ -77,9 +77,5 @@
 <%= will_paginate @users, :previous_label => '«', :next_label => '»' %>  
 </center>
 
-
-<br>
-
-<%= link_to 'Incluir novo usuário', new_user_path, class: "btn btn-orange right" %>
 </div>
 

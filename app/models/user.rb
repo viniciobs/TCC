@@ -8,7 +8,7 @@ class User < ApplicationRecord
   	enum user_type: { manager: 0, musician: 1, customer: 2 }
 
   	scope :filter_by_type, -> (type) { where user_type: type }
-	  scope :filter_by_name, -> (name) { where("upper(name) like upper(?) OR upper(username) like (?)", "%#{name}%", "%#{name}%") }
+	  scope :filter_by_name, -> (name) { where("upper(name) like upper(?) OR upper(access) like (?)", "%#{name}%", "%#{name}%") }
 
   	def email_required?
   		false
