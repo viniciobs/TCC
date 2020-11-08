@@ -30,14 +30,15 @@
 </p>
 
 <p>
-  <strong>Imagem:</strong>
-  <%= image_tag @product.image.thumb.url %>
-</p>
-
-<p>
   <strong>Descrição:</strong>
   <%= @product.description %>
 </p>
+
+<p>
+  <strong>Imagem:</strong>
+  <%= image_tag(@product.image.thumb.url, alt: 'Imagem') if @product.image? %>
+</p>
+
 </div>
 
 <%= link_to "Inventariar", edit_stock_path(Stock.where(product_id: @product.id).first.id), class: "left link" %> 
