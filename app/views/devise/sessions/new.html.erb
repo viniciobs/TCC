@@ -7,10 +7,15 @@
 <center>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <%= render "devise/shared/error_messages", resource: resource %>
+
+ <% if flash[:alert] %>
+   <%= flash[:alert] %>
+<% end %>
+
 <h1 class="h3 mb-3 font-weight-normal">Conexão Boteco</h1>
 
   <div class="field">
-    <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: "Login", required: true  %>
+    <%= f.text_field :access, autofocus: true, class: "form-control", placeholder: "Login", required: true  %>
   </div>
 
   <div class="field">

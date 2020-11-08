@@ -54,9 +54,7 @@
     <%= form.label :image, "Imagem" %><br>
     <%= form.file_field :image %>
     <% if form.object.image? %>
-      <%= image_tag form.object.image.thumb.url %>
-      <%= form.label :remove_image, "Remover imagem" %>
-      <%= form.check_box :remove_image, class: "form-control" %> 
+      <%= image_tag form.object.image.thumb.url %>     
     <% end %>
   </div>
 </div>
