@@ -15,7 +15,7 @@
         <%= text_field_tag 'name', params[:name], :class => "form-control", :placeholder => "Buscar por nome ou login" %>
       </div>
        <div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12">
-         <%= select_tag(:type, options_for_select([['-- Selecione o tipo --', nil], ['Administrador', 0], ['Músico', 1], ['Cliente', 2]]), class: "form-control")  %>
+         <%= select_tag(:type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 0], ['Artista', 1], ['Cliente', 2]]), class: "form-control")  %>
       </div>
       <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12 actions">
          <%= button_tag :class => "btn btn-orange" do %>            
@@ -35,6 +35,7 @@
       <th>Nome</th>
       <th>Login</th>
       <th>Tipo</th>    
+       <th>Ativo?</th>   
       <th></th>
     </tr>
   </thead>
@@ -45,6 +46,7 @@
         <td><%= user.name %></td>
         <td><%= user.access %></td>
         <td><%= user.type_description %></td>
+        <td><%= user.active_description %></td>
         <td class="icons">
             <%= link_to user do%>
               <svg width="1em" height="1em" viewBox="0 0 16 16" class="icon bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

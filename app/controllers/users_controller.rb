@@ -19,34 +19,10 @@ class UsersController < ApplicationController
   def edit
   end
 
-  # POST /users
-  # POST /users.json
-  def create
-    @user = User.new(user_params)
-
-    if exists @user.username 
-      respond_to do |format|
-        flash.now[:notice] = "Já existe um usuário cadastrado com este login."
-        format.html { render :edit }      
-      end
-
-      return
-    end
-
-    respond_to do |format|
-      if @user.save                      
-        format.html { redirect_to @user, notice: @user.name + ' cadastrado com sucesso.' }
-        format.json { render :show, status: :created, location: @user }         
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
-  def update
+  def update  
+ 
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: @user.name + ' atualizado com sucesso.' }
@@ -77,10 +53,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :username, :user_type, :password, :password_confirmation)
-    end
-
-    def exists username
-      return User.any?{|x| x.username == username}
-    end
+      params.require(:user).permit(:user_type, :active)
+    end    
 end

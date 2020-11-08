@@ -10,42 +10,29 @@
       </ul>
     </div>
   <% end %>
-
-<div class="form-row">
-  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="form-row">
+     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="field">
-    <%= form.label :name, "Nome" %>
-    <%= form.text_field :name, class: "form-control", placeholder: "Nome do usuário", :required => true  %>
+    Nome: <%= form.label user.name %>  
+  </div>
+</div>
+  </div>
+
+<div class="form-row">    
+<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="field">
+    <br/>
+    <%= form.label :active, "Ativo?" %>
+    <%= form.check_box :active, class: "form-check-input" %>
   </div>
 </div>
 </div>
 
-<div class="form-row">
-  <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-  <div class="field">
-    <%= form.label :uername, "Login" %>
-    <%= form.text_field :uername, class: "form-control", placeholder: "Login de acesso", :required => true  %>
-  </div>
-</div>
-<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <div class="form-row">    
+<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="field">
     <%= form.label :user_type, "Tipo de usuário" %>
-    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Administrador', 0], ['Músico', 1], ['Cliente', 2]]), {}, {class: "form-control"})  %>
-  </div>
-</div>
-</div>
-
-<div class="form-row">
-  <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-  <div class="field">
-    <%= form.label :password, "Senha" %>
-    <%= form.password_field :password, class: "form-control", placeholder: "Senha de acesso", :required => true  %>
-  </div>
-</div>
-<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-  <div class="field">
-    <%= form.label :password_confirmation, "Confirme a senha" %>
-    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirmação da senha de acesso", :required => true  %>
+    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer']], :selected => user.user_type), {}, {class: "form-control"})  %>
   </div>
 </div>
 </div>

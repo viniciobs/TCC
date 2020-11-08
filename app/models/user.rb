@@ -27,5 +27,19 @@ class User < ApplicationRecord
         return "Cliente"
       end                
     end
+
+    def type_value
+      if self.user_type == "manager"
+        return 0
+      elsif self.user_type == "musician"
+        return 1
+      else 
+        return 2
+      end                
+    end
+
+    def active_description
+      return self.active ? "S" : "N"
+    end
   
 end
