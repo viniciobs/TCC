@@ -52,10 +52,13 @@
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="field">
     <%= form.label :image, "Imagem" %><br>
-    <%= form.file_field :image %>
+    <%= form.file_field :image, class: "file-upload hidden" %>
     <% if form.object.image? %>
       <%= image_tag form.object.image.thumb.url %>     
     <% end %>
+
+    <br>    <br>
+    <span class="btn btn-orange" onClick="openDialog()">Escolher imagem</span>
   </div>
 </div>
 </div>
@@ -67,3 +70,10 @@
   </div>
 </div>
 <% end %>
+
+<script>
+function openDialog()
+{
+  $(".file-upload").click();
+}
+</script>
