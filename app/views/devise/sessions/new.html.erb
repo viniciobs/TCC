@@ -22,12 +22,7 @@
     <%= f.password_field :password, class: "form-control", placeholder: "Senha", required: true   %>
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field right">
-      <%= f.check_box :remember_me  %>
-      <%= f.label :remember_me, "Lembrar-me" %>     
-    </div>
-  <% end %>
+ <br>
 
   <div class="actions">
     <%= f.submit "Acessar", class: "btn btn-orange btn-lg btn-block" %>
