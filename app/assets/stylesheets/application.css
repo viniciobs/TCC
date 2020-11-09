@@ -39,17 +39,19 @@ table td a { color: #000; }
     border-top: 1px solid #fff;
 }
 
-#menu ul li:hover, #menu .log-out:hover { background-color: #bc821d; }
+#menu ul li:hover{ background-color: #bc821d; }
 
-#menu a.log-out
-{ 
-    background-color: rgba(255,180,26, 0.7);
-    bottom: 0px;
+#menu .sign_out
+{
     position: absolute;
-    padding: 1em 2em;
-    text-align: center;
-    width: 100%;
+    top: 0;
+    right: 0px;
+    font-size: 20px;
+    background: transparent;
+   
 }
+
+#menu .sign_out:hover {color: #bc821d;}
 
 .panel 
 {
