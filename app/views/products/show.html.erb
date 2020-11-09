@@ -43,6 +43,7 @@
 
 <%= link_to "Inventariar", edit_stock_path(Stock.where(product_id: @product.id).first.id), class: "left link" %> 
 
+<%= link_to 'Incluir novo produto', new_product_path, class: "btn btn-orange right" %>
 <%= link_to 'Voltar', products_path, class: "btn btn-orange right" %>
 
 </div>
