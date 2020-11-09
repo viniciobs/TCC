@@ -1,5 +1,7 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
+  before_action :check_specifc_permission, only: [:edit, :create, :new, :destroy]
+  before_action :check_shared_permission, only: [:index, :show]
 
   # GET /songs
   # GET /songs.json
@@ -95,5 +97,13 @@ class SongsController < ApplicationController
 
     def exists name, author
       return Song.any?{|x| x.name == name && x.author == author && x.user_id == current_user.id }
+    end
+
+    def check_specifc_permission
+      render_404 if !current_user.nil? && current_user.user_type != 'musician'
+    end
+
+    def check_shared_permission
+      render_404 if !current_user.nil? && current_user.user_type == 'customer'
     end
 end
