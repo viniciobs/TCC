@@ -30,8 +30,8 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def check_user_active			
-		redirect_to get_route(current_user) if !current_user.nil? && !current_user.active? && request.path != users_inactive_users_path(id: current_user.id) && request.path != destroy_user_session_path
+	def check_user_active				
+		redirect_to get_route(current_user) if !current_user.nil? && ((!current_user.active? && request.path != users_inactive_users_path(id: current_user.id) && request.path != destroy_user_session_path) || current_user.active? && request.path == users_inactive_users_path(id: current_user.id))		
 	end
 
 
