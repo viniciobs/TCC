@@ -10,6 +10,8 @@ class User < ApplicationRecord
   	scope :filter_by_type, -> (type) { where user_type: type }
 	  scope :filter_by_name, -> (name) { where("upper(name) like upper(?) OR upper(access) like (?)", "%#{name}%", "%#{name}%") }
 
+    has_many :songs, dependent: :destroy
+
   	def email_required?
   		false
   	end

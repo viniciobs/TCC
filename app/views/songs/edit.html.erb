@@ -1,0 +1,11 @@
+<% @page_title =  @song.name + " - " + @song.author + " - Edição"%>
+
+<div class="container">
+	<div class="page-header" align="center">
+	    <h1>Gerenciamento de música<br><small>Edite detalhes da música</small></h1>
+	</div>
+
+	<p id="notice"><%= notice %></p>
+<%= render 'form', song: @song %>
+
+</div>

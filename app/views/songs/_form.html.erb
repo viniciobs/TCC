@@ -1,0 +1,36 @@
+<%= form_with(model: song, local: true) do |form| %>
+  <% if song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(song.errors.count, "erro") %> </h2>
+
+      <ul>
+        <% song.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="form-row">
+  <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <div class="field">
+    <%= form.label :author, "Banda" %>
+    <%= form.text_field :author, class: "form-control", placeholder: "Nome da banda", :required => true   %>
+  </div>
+</div>
+<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <div class="field">
+    <%= form.label :name, "Música" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Nome da música", :required => true%>
+  </div>
+</div>
+</div>
+
+ <div class="form-row">
+  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 actions">
+    <%= form.submit "Salvar", class: "btn btn-orange right" %>
+    <%= link_to 'Cancelar', songs_path, class: "right btn btn-orange" %>
+  </div>
+</div>
+<% end %>

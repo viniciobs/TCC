@@ -62,6 +62,16 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+
+    if can_update @product.name  
+      respond_to do |format|
+        flash.now[:notice] = "Já existe um produto cadastrado com este nome."
+        format.html { render :edit }      
+      end
+
+      return
+    end
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: @product.name + ' atualizado com sucesso.' }
@@ -97,5 +107,11 @@ class ProductsController < ApplicationController
 
     def exists product_name
       return Product.any?{|x| x.name == product_name}
+    end
+
+    def can_update product_name
+      product = Product.where(name: product_name).first
+
+      return product.nil? || product.id == @product.id
     end
 end
