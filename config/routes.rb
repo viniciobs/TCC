@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   end
 
   resources :users
+
+  resource :users do
+    get ":id/inactive" => 'users#inactive', as: 'users_inactive'
+  end
+
   resources :stocks
   resources :products
   resources :product_categories

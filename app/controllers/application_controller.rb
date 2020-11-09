@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base		
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	before_action :authenticate_user!
+	before_action :check_user_active
 
 	protected
 
@@ -11,7 +12,16 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_in_path_for(resource)
-	 	if resource.user_type == 'manager'
+		return get_route(resource)
+	end
+
+	private 
+
+	def get_route resource 
+		
+		if !resource.active			
+			return users_inactive_users_path(id: resource.id)
+	 	elsif resource.user_type == 'manager'
 	    	return stocks_path
 	 	elsif resource.user_type == 'musician'
 	    	return songs_path
@@ -19,4 +29,10 @@ class ApplicationController < ActionController::Base
 
 		end
 	end
+
+	def check_user_active			
+		redirect_to get_route(current_user) if !current_user.nil? && !current_user.active? && request.path != users_inactive_users_path(id: current_user.id) && request.path != destroy_user_session_path
+	end
+
+
 end

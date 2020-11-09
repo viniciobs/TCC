@@ -15,6 +15,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  # GET /users/1/inactive
+  # GET /users/1/inactive.json
+  def inactive
+  end
+
   # GET /users/1/edit
   def edit
   end
@@ -48,7 +53,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:id]) 
     end
 
     # Only allow a list of trusted parameters through.
