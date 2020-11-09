@@ -35,6 +35,11 @@
 </p>
 
 </div>
+
+<% if @user.user_type == "musician" %>
+  <%= link_to 'Visualizar repertório', songs_path(musician: @user), class: "btn btn-orange right" %>
+<% end %>
+
 <%= link_to 'Voltar', users_path , class: "btn btn-orange right"  %>
 </div>
 

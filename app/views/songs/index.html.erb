@@ -16,7 +16,10 @@
       </div>
       <div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12">
         <%= text_field_tag 'name', params[:name], :class => "form-control", :placeholder => "Buscar por música" %>
-      </div>      
+      </div>   
+      <% if params[:musician].present? %>
+      <%= hidden_field_tag 'musician', params[:musician] %>
+      <%end%>   
       <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12 actions">
          <%= button_tag :class => "btn btn-orange" do %>            
          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +46,9 @@
       <tr>
         <td><%= song.author %></td>
         <td><%= song.name %></td>
+
 <td class="icons">
+  <% if current_user.user_type == "musician" %>
             <%= link_to song do%>
               <svg width="1em" height="1em" viewBox="0 0 16 16" class="icon bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
@@ -64,6 +69,7 @@
           </td>
       </tr>
     <% end %>
+      <% end %>
   </tbody>
 </table>
 
@@ -77,5 +83,7 @@
 
 <br>
 
-<%= link_to 'Incluir nova música', new_song_path, class: "btn btn-orange right" %>
+<% if current_user.user_type == "musician" %>
+  <%= link_to 'Incluir nova música', new_song_path, class: "btn btn-orange right" %>
+<% end %>  
 </div>

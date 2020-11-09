@@ -3,8 +3,8 @@ class SongsController < ApplicationController
 
   # GET /songs
   # GET /songs.json
-  def index
-    @songs = Song.where(user_id: current_user.id)
+  def index    
+    @songs = params[:musician].present? ? Song.where(user_id: params[:musician]) : Song.where(user_id: current_user.id)    
     @songs = @songs.filter_by_author(params[:author]) if params[:author].present?
     @songs = @songs.filter_by_name(params[:name]) if params[:name].present?
     @songs = @songs.paginate(:page => params[:page], :per_page => 10)
