@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @users = User.all
     @users = @users.filter_by_type(params[:type]) if params[:type].present?
     @users = @users.filter_by_name(params[:name]) if params[:name].present?
+    @users = @users.filter_by_scheduled_today if params[:scheduled_today].present?
     @users = @users.paginate(:page => params[:page], :per_page => 10)
   end
 

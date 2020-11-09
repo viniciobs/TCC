@@ -7,8 +7,9 @@ class User < ApplicationRecord
 
   	enum user_type: { manager: 0, musician: 1, customer: 2 }
 
-  	scope :filter_by_type, -> (type) { where user_type: type }
+  	scope :filter_by_type, -> (type) { where user_type: type }    
 	  scope :filter_by_name, -> (name) { where("upper(name) like upper(?) OR upper(access) like (?)", "%#{name}%", "%#{name}%") }
+    scope :filter_by_scheduled_today, -> { where scheduled_today: true }
 
     has_many :songs, dependent: :destroy
 
