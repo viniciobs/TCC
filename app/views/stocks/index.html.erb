@@ -8,6 +8,33 @@
 
   <p id="notice"><%= notice %></p>
 
+    <div class="filter">
+    <%= form_tag(stocks_path, :method => :get) do %>    
+    <div class="form-row">
+      <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <%= text_field_tag 'product', params[:product], :class => "form-control", :placeholder => "Buscar por produto" %>
+      </div>
+       <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12">
+         <%= select_tag "category", options_for_select(ProductCategory.all.collect{|u| [u.name, u.id]}, params[:category]), :include_blank => "-- Buscar por categoria --", :class => "form-control" %>
+      </div>
+      <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-6">
+        <%= number_field_tag 'min_quantity', params[:min_quantity], :class => "form-control", :placeholder => "Qt. mínima" %>
+      </div>
+      <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-6">
+        <%= text_field_tag 'max_quantity', params[:max_quantity], :class => "form-control", :placeholder => "Qt. máxima" %>
+      </div>
+      <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12 actions">
+         <%= button_tag :class => "btn btn-orange" do %>            
+         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+          <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+        </svg>&nbsp;&nbsp;Filtrar
+         <%end%>
+    </div>
+    </div>
+  <%end%>
+  </div>  
+
 <table class="table table-striped"> 
   <thead>
     <tr>
@@ -22,8 +49,8 @@
     <% @stocks.each do |stock| %>
     <% @product = Product.find(stock.product_id) %>
       <tr>
-        <td><%= @product.name %></td>
-        <td><%= @product.product_category.name %></td>
+        <td><%= link_to product_path(@product) do %><%= @product.name %><%end%></td>
+        <td><%= link_to product_category_path(@product.product_category) do %><%= @product.product_category.name %><%end%></td>
         <td class="number"><%= stock.quantity.blank? ? "Não informado" : stock.quantity  %></td>
         <td class="icons">            
             <%= link_to edit_stock_path(stock) do %>

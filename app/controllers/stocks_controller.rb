@@ -4,7 +4,20 @@ class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
   def index    
-    @stocks = Stock.paginate(:page => params[:page], :per_page => 10)
+
+    @products = nil
+
+    if params[:category].present? || params[:product].present? 
+      @products = Product.all    
+      @products = @products.filter_by_category(params[:category]) if params[:category].present?
+      @products = @products.filter_by_name(params[:product]) if params[:product].present?
+      @products = @products.select(:id)
+    end
+
+    @stocks = @products==nil ? Stock.all : Stock.where("product_id IN (?)", @products)
+    @stocks = @stocks.filter_by_min_quantity(params[:min_quantity]) if params[:min_quantity].present?
+    @stocks = @stocks.filter_by_max_quantity(params[:max_quantity]) if params[:max_quantity].present?
+    @stocks = @stocks.paginate(:page => params[:page], :per_page => 10)     
   end
 
   # GET /stocks/1
