@@ -9,4 +9,14 @@ class ApplicationController < ActionController::Base
 		devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
 		devise_parameter_sanitizer.permit :account_update, keys: added_attrs
 	end
+
+	def after_sign_in_path_for(resource)
+	 	if resource.user_type == 'manager'
+	    	return stocks_path
+	 	elsif resource.user_type == 'musician'
+	    	return songs_path
+		else
+
+		end
+	end
 end
