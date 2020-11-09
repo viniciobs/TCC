@@ -20,10 +20,18 @@
 
 <div class="form-row">    
 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="field">
-    <br/>
+  <div class="field">    
     <%= form.label :active, "Ativo?" %>
     <%= form.check_box :active, class: "form-check-input" %>
+  </div>
+</div>
+</div>
+
+<div id="schedule-today" class="form-row <% if user.user_type != "musician" %>hidden<%end%>">    
+<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="field">    
+    <%= form.label :scheduled_today, "Agendado para hoje?" %>
+    <%= form.check_box :scheduled_today, class: "form-check-input" %>
   </div>
 </div>
 </div>
@@ -32,7 +40,7 @@
 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="field">
     <%= form.label :user_type, "Tipo de usuário" %>
-    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer']], :selected => user.user_type), {}, {class: "form-control"})  %>
+    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer']], :selected => user.user_type), {}, { class: "form-control", onchange: 'display_scheduled_today(this)'})  %>
   </div>
 </div>
 </div>
@@ -44,3 +52,17 @@
   </div>
 </div>
 <% end %>
+
+<script type="text/javascript">
+function display_scheduled_today(obj)
+{
+  if (obj.value == 'musician')
+  {
+    $('#schedule-today').removeClass('hidden');
+  }
+  else
+  {
+    $('#schedule-today').addClass('hidden');
+  }
+}
+</script>

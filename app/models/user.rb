@@ -43,5 +43,8 @@ class User < ApplicationRecord
     def active_description
       return self.active ? "S" : "N"
     end
-  
+
+    def scheduled_description
+      return self.scheduled_today ? "S" : "N"
+    end  
 end

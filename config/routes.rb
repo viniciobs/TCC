@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :rates
   resources :songs
   devise_for :users
 

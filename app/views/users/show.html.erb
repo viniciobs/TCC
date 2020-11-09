@@ -34,6 +34,13 @@
   <%= @user.active_description %>
 </p>
 
+<% if @user.user_type == 'musician' %>
+  <p>
+    <strong>Agendado para hoje:</strong>
+    <%= @user.scheduled_description %>
+  </p>
+<%end%>
+
 </div>
 
 <% if @user.user_type == "musician" %>

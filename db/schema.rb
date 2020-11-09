@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_021044) do
+ActiveRecord::Schema.define(version: 2020_11_09_175930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2020_11_09_021044) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "product_category_id"
     t.string "image"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer "song_id", null: false
+    t.integer "user_id", null: false
+    t.decimal "value", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "songs", force: :cascade do |t|
@@ -57,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_021044) do
     t.string "name", null: false
     t.string "access", null: false
     t.boolean "active", default: false, null: false
+    t.boolean "scheduled_today"
     t.index ["access"], name: "index_users_on_access", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
