@@ -1,5 +1,6 @@
 class ProductCategoriesController < ApplicationController
   before_action :set_product_category, only: [:show, :edit, :update, :destroy]
+  before_action :check_user_permission
 
   # GET /product_categories
   # GET /product_categories.json
@@ -86,5 +87,9 @@ class ProductCategoriesController < ApplicationController
 
     def exists product_category_name
       return ProductCategory.any?{|x| x.name == product_category_name}
+    end
+
+    def check_user_permission
+      render_404 if !current_user.nil? && current_user.user_type != 'manager'
     end
 end

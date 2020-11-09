@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :check_user_permission
 
   # GET /products
   # GET /products.json
@@ -113,5 +114,9 @@ class ProductsController < ApplicationController
       product = Product.where(name: product_name).first
 
       return product.nil? || product.id == @product.id
+    end
+
+    def check_user_permission
+      render_404 if !current_user.nil? && current_user.user_type != 'manager'
     end
 end

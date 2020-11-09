@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
 		return get_route(resource)
 	end
 
+	def render_404
+		render file: "#{Rails.root}/public/404", status: :not_found
+	end
+
 	private 
 
 	def get_route resource 

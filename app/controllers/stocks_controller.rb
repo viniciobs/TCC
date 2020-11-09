@@ -1,5 +1,7 @@
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  before_action :check_user_permission
+
 
   # GET /stocks
   # GET /stocks.json
@@ -82,5 +84,9 @@ class StocksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def stock_params
       params.require(:stock).permit(:product, :quantity)
+    end
+
+    def check_user_permission
+      render_404 if !current_user.nil? && current_user.user_type != 'manager'
     end
 end

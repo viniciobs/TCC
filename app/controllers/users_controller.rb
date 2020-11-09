@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_user_permission
 
   # GET /users
   # GET /users.json
@@ -60,4 +61,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:user_type, :active)
     end    
+
+     def check_user_permission
+      render_404 if !current_user.nil? && current_user.user_type != 'manager'
+    end
 end
