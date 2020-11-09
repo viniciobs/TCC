@@ -3,8 +3,15 @@ class RatesController < ApplicationController
 
   # GET /rates
   # GET /rates.json
-  def index
-    @rates = Rate.all
+  def index    
+    @artists = User.where('active=? AND user_type=? AND scheduled_today=?', true, 1, true)
+   
+    @songs = Song.where('user_id IN (?)', @artists.select(:id))
+    @songs = @songs.filter_by_author(params[:author]) if params[:author].present?
+    @songs = @songs.filter_by_name(params[:music]) if params[:music].present?
+    @songs = @songs.paginate(:page => params[:page], :per_page => 10)
+    
+    @rates = Rate.where('user_id=?', current_user.id)
   end
 
   # GET /rates/1

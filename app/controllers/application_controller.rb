@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 	 	elsif resource.user_type == 'musician'
 	    	return songs_path
 		else
-
+			return rates_path
 		end
 	end
 

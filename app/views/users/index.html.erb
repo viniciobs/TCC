@@ -72,7 +72,7 @@
 </table>
 
  <% if @users.empty? %>
-  <p class="text-center">Não há nenhum usuário cadastrado.</p>
+  <p class="text-center">Não há nenhum usuário.</p>
   <%end%>
 
 <center>
@@ -80,7 +80,7 @@
 </center>
 
 
-<%= link_to 'Visualizar músicos agendados', users_path(scheduled_today: true), class: "btn btn-orange right" %>
+<%= link_to 'Visualizar artistas agendados', users_path(scheduled_today: true), class: "btn btn-orange right" %>
 
 </div>
 
