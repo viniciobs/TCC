@@ -2,9 +2,18 @@ class ArtistSuggestionController < ApplicationController
   before_action :set_suggestion, only: [:destroy]
 
   def index    
-    @suggestions =  ArtistSuggestion.where(target_id: current_user.id) if current_user.user_type == 'musician'  
-    @suggestions = ArtistSuggestion.where(user_id: current_user.id) if current_user.user_type != 'musician'  
+    isMusician = current_user.user_type == 'musician'  
+
+    @suggestions =  ArtistSuggestion.where(target_id: current_user.id) if isMusician
+    @suggestions = ArtistSuggestion.where(user_id: current_user.id) if !isMusician
     @suggestions = @suggestions.paginate(:page => params[:page], :per_page => 10) 
+
+    if isMusician
+      @suggestions.each do |suggestion|
+        suggestion.seen = true
+        suggestion.save
+      end
+    end
   end
 
   def create  	
