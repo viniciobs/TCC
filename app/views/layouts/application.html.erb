@@ -60,8 +60,8 @@
                   <li><%= link_to 'Repertório', songs_path %></li> 
                 <%end%>
 
-                 <% if current_user.user_type == "customer" %> 
-                  <li><%= link_to 'Música ao vivo', rates_path %></li> 
+                <% if current_user.user_type == "customer" %> 
+                  <% if User.where(scheduled_today: true).any? %><li><%= link_to 'Música ao vivo', rates_path %></li><%end%>
                 <%end%>
                 
              <%end%>

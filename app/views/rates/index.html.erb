@@ -44,6 +44,11 @@
   <% end %>
 </div>
 
+<% if @songs.empty? %>
+  <p class="text-center">O artista ainda não cadastrou nenhuma música.</p>
+  <br>
+<%end%>
+
 <center>
   <%= will_paginate @songs, :previous_label => '«', :next_label => '»' %>  
 </center>
