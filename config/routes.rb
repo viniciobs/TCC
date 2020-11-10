@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   post 'artist_suggestion_create', to: 'artist_suggestion#create'
+  get 'artist_suggestion', to: 'artist_suggestion#index'
+  delete 'artist_suggestion_destroy', to: 'artist_suggestion#destroy'
 
   devise_for :users
 

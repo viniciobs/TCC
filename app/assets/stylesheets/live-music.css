@@ -30,6 +30,12 @@
     padding: 12px;
 }
 
+a.suggestions
+{
+    color: #ffa61a;
+    font-size: 16px;
+}
+
 textarea 
 {
   resize: none;

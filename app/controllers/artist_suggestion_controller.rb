@@ -1,7 +1,13 @@
 class ArtistSuggestionController < ApplicationController
+  before_action :set_suggestion, only: [:destroy]
+
+  def index    
+    @suggestions =  ArtistSuggestion.where(target_id: current_user.id) if current_user.user_type == 'musician'  
+    @suggestions = ArtistSuggestion.where(user_id: current_user.id) if current_user.user_type != 'musician'  
+    @suggestions = @suggestions.paginate(:page => params[:page], :per_page => 10) 
+  end
 
   def create  	
-
   	@artist_suggestion = ArtistSuggestion.new
   	@artist_suggestion.user_id = current_user.id
   	@artist_suggestion.target_id = User.where(scheduled_today: true).first.id
@@ -12,7 +18,21 @@ class ArtistSuggestionController < ApplicationController
         format.html { redirect_to rates_path, notice: message }
         format.json { render :index }      
     end
+  end
 
+  def destroy    
+    @suggestion.delete
+     
+    respond_to do |format|
+      format.html { redirect_to artist_suggestion_path, notice: 'Sugestão removida com sucesso.' }
+      format.json { head :no_content }
+    end
   end
   
+  private
+
+  def set_suggestion
+    @suggestion = ArtistSuggestion.find(params[:id])
+  end
+
 end
