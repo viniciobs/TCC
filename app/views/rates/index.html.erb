@@ -48,14 +48,16 @@
   <%= will_paginate @songs, :previous_label => '«', :next_label => '»' %>  
 </center>
 
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-12">
-        <div class="form-group">
-            <label for="suggestion" align="center">Deixe sua sugestão:</label>
-            <textarea class="form-control" id="suggestion" rows="3"></textarea>                        
-        </div>
-        <button type="button" class="btn btn-orange btn-sm">Enviar sugestão</button>
-    </div>                
-</div>
+<%= form_tag(artist_suggestion_create_path, :method => :post) do %>  
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-sm-12">
+          <div class="form-group">
+               <%= label_tag "Deixe sua sugestão:" %>
+               <%= text_area_tag 'text', nil, rows: 3, :class => "form-control", :required => true  %>                     
+          </div>
+         <%= button_tag 'Enviar sugestão', :class => "btn btn-orange" %>
+      </div>                
+  </div>
+  <%end%>
 
 

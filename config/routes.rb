@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :rates
-  resources :songs
+  post 'artist_suggestion_create', to: 'artist_suggestion#create'
+
   devise_for :users
 
   devise_scope :user do
@@ -14,12 +14,13 @@ Rails.application.routes.draw do
   	end
   end
 
-  resources :users
-
   resource :users do
     get ":id/inactive" => 'users#inactive', as: 'users_inactive'
   end
 
+  resources :users
+  resources :rates
+  resources :songs
   resources :stocks
   resources :products
   resources :product_categories

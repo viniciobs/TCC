@@ -1,0 +1,2 @@
+module ArtistSuggestionHelper
+end
