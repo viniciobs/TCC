@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   delete 'artist_suggestion_destroy', to: 'artist_suggestion#destroy'
 
   devise_for :users
+  
+  resources :users
 
   devise_scope :user do
   	authenticated :user do
@@ -20,7 +22,6 @@ Rails.application.routes.draw do
     get ":id/inactive" => 'users#inactive', as: 'users_inactive'
   end
 
-  resources :users
   resources :rates
   resources :songs
   resources :stocks

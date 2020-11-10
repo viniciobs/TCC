@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :check_user_permission
+  before_action :check_user_permission, except: [:inactive]
 
   # GET /users
   # GET /users.json
@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     @users = @users.paginate(:page => params[:page], :per_page => 10)
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /user/1
+  # GET /user/1.json
   def show
   end
 
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
+    def set_user      
       @user = User.find(params[:id]) 
     end
 
