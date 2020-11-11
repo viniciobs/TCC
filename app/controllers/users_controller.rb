@@ -32,6 +32,14 @@ class UsersController < ApplicationController
  
     respond_to do |format|
       if @user.update(user_params)
+
+        if @user.scheduled_today
+          User.all.filter_by_scheduled_today.where.not(id: @user.id).each do |u|
+            u.scheduled_today = false 
+            u.save 
+          end
+        end
+
         format.html { redirect_to @user, notice: @user.name + ' atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @user }
       else
