@@ -36,6 +36,15 @@ a.suggestions
     font-size: 16px;
 }
 
+.artist-info 
+{
+    text-align: right; 
+    margin-bottom: 2em;
+}
+
+.artist-info h3 { display: inline; }
+
+
 textarea 
 {
   resize: none;

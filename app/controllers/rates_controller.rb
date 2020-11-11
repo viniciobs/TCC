@@ -5,6 +5,7 @@ class RatesController < ApplicationController
   # GET /rates.json
   def index    
     @artists = User.where('active=? AND user_type=? AND scheduled_today=?', true, 1, true)
+    @scheduled_artist = @artists.first
    
     @songs = Song.where('user_id IN (?)', @artists.select(:id))
     @songs = @songs.filter_by_author(params[:author]) if params[:author].present?

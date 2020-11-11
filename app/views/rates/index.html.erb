@@ -30,6 +30,12 @@
   </div>  
 
 <div class="music-list">
+
+  <div class="artist-info">
+    <i>Artista:</i>
+    <h3><%= @scheduled_artist.name %></h3>
+  </div>  
+
   <% @songs.each do |song| %>
   <% rate = Rate.where(song: song) %>  
   <div class="row music" id="<%= song.id %>">
