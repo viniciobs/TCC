@@ -1,43 +1,52 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% @page_title =   "Edição de usuário"%>
+<%= stylesheet_link_tag "login" %>
 
+<div class="text-center">
+  <%= image_tag("loading.gif", height: 150) %>
+
+  <center>
+    
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <h1 class="h3 mb-3 font-weight-normal">Conexão Boteco</h1>
 
   <div class="field">
-    <%= f.label :access %><br />
-    <%= f.email_field :access, autofocus: true %>
+    <%= f.text_field :access, autofocus: true, placeholder: "Login", class: "form-control" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Seu nome" %>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <br>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <i>Deixe os campos de "Nova senha" em branco se não quiser alterar a senha atual</i>
+    <%= f.password_field :password, class: "form-control", placeholder: "Nova senha" %> 
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirme a nova senha" %>  
   </div>
+  <br>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <i>É necessário sua senha para salvar as alterações</i>
+    <%= f.password_field :current_password, class: "form-control", placeholder: "Senha atual", required: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+  <br>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Atualizar meus dados", class: "btn btn-orange" %>
   </div>
+
+  <hr>
+
 <% end %>
 
-<h3>Cancel my account</h3>
+ <p>Deseja cancelar sua conta? 
+  <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza que deseja cancelar sua conta?" }, method: :delete, class: "btn btn-orange" %>
+  </p>
+  <%= link_to "Voltar", :back %>  
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+ </center>
+  </div> 
 
-<%= link_to "Back", :back %>
+
+
+
+

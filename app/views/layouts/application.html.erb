@@ -33,7 +33,9 @@
     <% if user_signed_in? %>
     
         <nav id="menu" class="panel" role="navigation">                
-            <span>Olá, <strong><%= current_user.name %></strong></span>
+            <%= link_to edit_user_registration_path do %>
+              <span>Olá, <strong><%= current_user.name %></strong></span>
+             <%end%>
              
              <%= link_to destroy_user_session_path, method: :delete do %> 
                 <span class="sign_out">

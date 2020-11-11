@@ -15,18 +15,7 @@ class ApplicationController < ActionController::Base
 		return get_route(resource)
 	end
 
-	def render_404
-		respond_to do |format|
-			format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
-			format.xml  { head :not_found }
-			format.any  { head :not_found }
-		end
-	end
-
-	private 
-
-	def get_route resource 
-		
+	def get_route resource 		
 		if !resource.active			
 			return users_inactive_users_path(id: resource.id)
 	 	elsif resource.user_type == 'manager'
@@ -38,9 +27,18 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def render_404
+		respond_to do |format|
+			format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+			format.xml  { head :not_found }
+			format.any  { head :not_found }
+		end
+	end	
+
+	private 
+
 	def check_user_active				
 		redirect_to get_route(current_user) if !current_user.nil? && ((!current_user.active? && request.path != users_inactive_users_path(id: current_user.id) && request.path != destroy_user_session_path) || current_user.active? && request.path == users_inactive_users_path(id: current_user.id))		
 	end
-
 
 end
