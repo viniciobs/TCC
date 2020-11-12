@@ -3,11 +3,6 @@
     margin: 2em;
 }
 
-.music-list .music
-{
-    padding: 1em 0;
-}
-
 .music-list .music span.band
 {
     color: #fff;
@@ -23,11 +18,6 @@
 .music-list .music-info
 {
     padding:8px;
-}
-
-.music-list .music-rate
-{
-    padding: 12px;
 }
 
 a.suggestions
@@ -60,6 +50,7 @@ textarea
 
 @media screen and (max-width:767px)
 {
+    .music-list .music-rate { padding: 12px; }
     .music
     {
         text-align: center;
