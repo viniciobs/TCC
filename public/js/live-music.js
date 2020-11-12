@@ -1,0 +1,4 @@
+$("input.rating").change(function() 
+{
+
+});

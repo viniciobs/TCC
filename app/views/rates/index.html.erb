@@ -48,7 +48,7 @@
               <span class="band"><%= song.author %></span>
             </div>
             <div class="col-md-3 col-sm-3 music-rate">
-                <input class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="<%= rate.empty? ? 0 : rate.value %>">
+                <input <%= "id='rate.id'" if rate.present? %> class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="<%= rate.empty? ? 0 : rate.value %>">
             </div> 
           </div>   
           <%end%>                            
