@@ -38,9 +38,10 @@
 
   <% (0..@songs.length - 1).step(2).each do |index| %>
     <div class="row">
-      <% (index..(index+1)).each do |i| %>
+      <% (index..(index+1)).each do |i| %>      
         <% song = @songs[i] %>
-        <% rate = Rate.where(song: song) %>    
+        <% if song.present? %>
+          <% rate = Rate.where(song: song) %>    
           <div id="<%= song.id %>" class="music">
             <div class="col-md-3 col-sm-3 music-info">
               <span class="title"><%= song.name %></span>
@@ -49,7 +50,8 @@
             <div class="col-md-3 col-sm-3 music-rate">
                 <input class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="<%= rate.empty? ? 0 : rate.value %>">
             </div> 
-          </div>                               
+          </div>   
+          <%end%>                            
       <%end%>        
     </div>    
   <% end %>
