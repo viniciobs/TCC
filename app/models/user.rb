@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
     has_many :songs, dependent: :destroy
     has_many :rates, dependent: :destroy
+    has_many :artist_suggestions, dependent: :destroy
 
   	def email_required?
   		false

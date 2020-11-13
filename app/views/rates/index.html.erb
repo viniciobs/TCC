@@ -41,7 +41,7 @@
       <% (index..(index+1)).each do |i| %>      
         <% song = @songs[i] %>
         <% if song.present? %>
-          <% rate = Rate.where(song_id: song.id).first %>    
+          <% rate = @rates.where(song_id: song.id).first %>    
           <div id="<%= song.id %>" class="music">
             <div class="col-md-3 col-sm-3 music-info">
               <span class="title"><%= song.name %></span>

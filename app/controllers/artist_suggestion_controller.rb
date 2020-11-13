@@ -14,6 +14,8 @@ class ArtistSuggestionController < ApplicationController
         suggestion.save
       end
     end
+
+    @users = User.where('id in (?)', @suggestions.select(:user_id))
   end
 
   def create  	
