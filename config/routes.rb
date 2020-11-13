@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'rates_list', to: 'rates#list'
   post 'rates_create_or_update', to: 'rates#save'
+  
   post 'artist_suggestion_create', to: 'artist_suggestion#create'
   get 'artist_suggestion', to: 'artist_suggestion#index'
   delete 'artist_suggestion_destroy', to: 'artist_suggestion#destroy'
