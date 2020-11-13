@@ -27,12 +27,14 @@
   <div class="actions">
     <%= f.submit "Acessar", class: "btn btn-orange btn-lg btn-block" %>
   </div>
-
-   <%= link_to "Criar conta", new_registration_path(resource_name), class: "new" %>
-
+   
+   <div class="devise-links">
+    <%= link_to "Criar conta", new_registration_path(resource_name), class: "new" %><br>
+    <%= link_to "Esqueceu sua senha?", new_password_path(resource_name) %>  
+   </div>
+   
 <% end %>
 </center>
-
 </div>
 
 
