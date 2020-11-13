@@ -4,7 +4,11 @@ class RatesController < ApplicationController
   before_action :set_rate, only: [:save]
 
   def save     
-    @rate.value = params[:value]   
+    @rate.value = params[:value]
+
+    if @rate.value.nil?
+      @rate.value = 0
+    end
 
     if @rate.save 
       render :json => @rate, :status => :created
