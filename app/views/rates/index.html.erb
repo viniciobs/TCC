@@ -41,14 +41,19 @@
       <% (index..(index+1)).each do |i| %>      
         <% song = @songs[i] %>
         <% if song.present? %>
-          <% rate = Rate.where(song: song) %>    
+          <% rate = Rate.where(song_id: song.id).first %>    
           <div id="<%= song.id %>" class="music">
             <div class="col-md-3 col-sm-3 music-info">
               <span class="title"><%= song.name %></span>
               <span class="band"><%= song.author %></span>
-            </div>
-            <div class="col-md-3 col-sm-3 music-rate">
-                <input <%= "id='rate.id'" if rate.present? %> class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="<%= rate.empty? ? 0 : rate.value %>">
+            </div>    
+            <div class="col-md-3 col-sm-3 music-rate">      
+               <%= form_tag(rates_create_or_update_path, :method => :post) do %>                    
+                    <%= hidden_field_tag 'id', (rate.present? ? rate.id : nil) %>         
+                    <%= hidden_field_tag 'song_id', song.id %>  
+                    <%= hidden_field_tag 'user_id', current_user.id %>                                 
+                    <input name="value" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="<%= rate.nil? ? 0 : rate.value %>">               
+               <%end%>           
             </div> 
           </div>   
           <%end%>                            

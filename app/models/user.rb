@@ -12,6 +12,7 @@ class User < ApplicationRecord
     scope :filter_by_scheduled_today, -> { where scheduled_today: true }
 
     has_many :songs, dependent: :destroy
+    has_many :rates, dependent: :destroy
 
   	def email_required?
   		false
