@@ -35,24 +35,18 @@ h3.title
     color: #ffa61a;
 }
 
-.menu-item
-{
-    margin-top:2.5em;
-}
+.menu-item { margin-top:2.5em }
 
-.item-quantity
-{
-    max-width: 120px;
-}
+.item-quantity{ max-width: 120px; }
+.item-quantity input {  text-align: center; }
+.item-quantity span { cursor: pointer; }
 
-.item-quantity input
-{
-    text-align: center;
-}
+.swiper-pagination { margin-top: 5em; }
 
-.item-quantity span
+.swiper-pagination-bullet 
 {
-    cursor: pointer;
+    width: 12px;
+    height: 12px;
 }
 
 @media screen and (max-width:767px)
