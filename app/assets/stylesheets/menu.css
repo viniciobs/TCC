@@ -22,6 +22,15 @@
 	background-color: #bc821d;
 }
 
+.food-menu .item:not(.active) .menu-item { display: none; }
+
+.food-menu .item.active .menu-item
+{
+	width: 200%;
+    left: -50%;
+    position: relative;
+}
+
 h3.title
 {
     border-bottom: 1px dashed #707070;
@@ -33,9 +42,11 @@ h3.title
     font-size: 1.2em;
     font-weight: bold;
     color: #ffa61a;
+    text-align: right;
 }
 
 .menu-item { margin-top:2.5em }
+.menu-item p { text-align: justify; }
 
 .item-quantity{ max-width: 120px; }
 .item-quantity input {  text-align: center; }
