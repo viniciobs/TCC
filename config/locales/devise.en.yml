@@ -13,20 +13,20 @@ en:
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account is locked."
       not_found_in_database: "Os dados não foram encontrados."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
+      timeout: "Sua sessão expirou. Por favor acesse."
+      unauthenticated: "Você precisa estar logado para continuar"
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Intrucões de confirmação"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Instruções para recuperar senha"
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: "Instruções para desbloqueio"
       email_changed:
-        subject: "Email Changed"
+        subject: "E-mail alterado"
       password_change:
-        subject: "Password Changed"
+        subject: "Senha alterada"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
