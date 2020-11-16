@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'menu', to: 'menu#index' 
+
   get 'rates_list', to: 'rates#list'
   post 'rates_create_or_update', to: 'rates#save'
   

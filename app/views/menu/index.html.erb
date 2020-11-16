@@ -1,0 +1,14 @@
+<% @page_title =  "Cardápio" %>
+
+<div class="container">
+    <div class="food-menu">    
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <% @categories.each do |category| %>
+                    <div class="item swiper-slide"><a href="#"><%=  category.name%></a></div>
+                <%end%>                    
+            </div>            
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>

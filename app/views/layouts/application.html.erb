@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
 
     <link rel="manifest" href="../../../manifest.json">
-    <link rel="stylesheet" href="../../../lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../lib/bootstrap/bootstrap.min.css">    
     <link rel="icon" href="../../../images/icons/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../../../images/icons/152px-icon.png">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,6 +16,11 @@
       <%= stylesheet_link_tag 'live-music', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= stylesheet_link_tag 'rating', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
+
+    <% if request.path == menu_path %>
+      <link rel="stylesheet" href="../../../lib/swiper-bundle/swiper-bundle.min.css">
+      <%= stylesheet_link_tag 'menu', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%end%>
         
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="white"/>
@@ -57,13 +62,15 @@
                      <li><%= link_to 'Usuários', users_path, method: :get %></li> 
                  <%end%>
 
-                <% if current_user.user_type == "musician" %> 
+                <% if current_user.user_type == "musician" %>
+                  <li><%= link_to 'Cardápio', menu_path %></li>  
                   <li><%= link_to 'Avaliações', rates_list_path %></li> 
                   <li><%= link_to 'Sugestões', artist_suggestion_path %></li>              
                   <li><%= link_to 'Repertório', songs_path %></li> 
                 <%end%>
 
                 <% if current_user.user_type == "customer" %> 
+                  <li><%= link_to 'Cardápio', menu_path %></li>  
                   <% if User.where(scheduled_today: true).any? %><li><%= link_to 'Música ao vivo', rates_path %></li><%end%>
                 <%end%>
                 
@@ -89,12 +96,17 @@
         </div>
     </div>        
     
-    <script type="text/javascript" src="../../../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery/jquery.3.5.1.min.js"></script>
     <script type="text/javascript" src="../../../js/bigslide.min.js"></script>
    
     <% if request.path == rates_path %>
        <script type="text/javascript" src="../../../js/rating.min.js"></script>
        <script type="text/javascript" src="../../../js/live-music.js"></script>
+    <% end %> 
+
+    <% if request.path == menu_path %>
+      <script type="text/javascript" src="../../../lib/swiper-bundle/swiper-bundle.min.js"></script>
+      <script type="text/javascript" src="../../../js/menu.js"></script>           
     <% end %> 
 
     <script>
