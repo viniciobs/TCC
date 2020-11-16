@@ -4,8 +4,6 @@
 	text-align: center;
 }
 
-.food-menu img { margin-top: 3.5em; }
-
 .food-menu .item a
 {
 	background-color: #fff;
@@ -33,18 +31,21 @@
     position: relative;
 }
 
-h3.title
+.title
 {
     border-bottom: 1px dashed #707070;
-    padding-bottom: 0.5em;
     text-align: left;
+    padding-left: 1em;
+    margin-bottom: 0.5em;
 }
 
 .price
 {
-    font-size: 1.2em;
+    font-size: 0.9em;
     font-weight: bold;
     color: #ffa61a;
+    text-align: right;
+    float: right;
     text-align: right;
 }
 
@@ -67,14 +68,9 @@ h3.title
 {
 	.food-menu .item.active .menu-item
 	{
-		width: 300%;
-	    left: -100%;	    
+		width: 250%;
+	    left: -75%;	    
 	}
-}
-
-@media screen and (max-width: 766px)
-{
-	.img-thumbnail { float:left; }
 }
 
 @media screen and (max-width:500px)

@@ -26,7 +26,7 @@
 
 <p>
   <strong>Preço:</strong>
-  R$ <%= number_with_precision(@product.price, precision: 2) %>
+  R$ <%= number_with_precision(@product.price, precision: 2, separator: ',') %>
 </p>
 
 <p>
