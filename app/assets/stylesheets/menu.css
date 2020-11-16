@@ -4,6 +4,8 @@
 	text-align: center;
 }
 
+.food-menu img { margin-top: 3.5em; }
+
 .food-menu .item a
 {
 	background-color: #fff;
