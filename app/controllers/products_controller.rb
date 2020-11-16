@@ -27,9 +27,18 @@ class ProductsController < ApplicationController
 
   # POST /products
   # POST /products.json
-  def create
+  def create    
     @product = Product.new(product_params)
 
+    if @product.image.url.nil?
+      respond_to do |format|
+        flash.now[:notice] = "É necessário incluir uma imagem para o produto."
+        format.html { render :edit }      
+      end
+
+      return
+    end   
+    
     if exists @product.name 
       respond_to do |format|
         flash.now[:notice] = "Já existe um produto cadastrado com este nome."
@@ -64,7 +73,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
 
-    if can_update @product.name  
+    if !can_update @product 
       respond_to do |format|
         flash.now[:notice] = "Já existe um produto cadastrado com este nome."
         format.html { render :edit }      
@@ -110,10 +119,8 @@ class ProductsController < ApplicationController
       return Product.any?{|x| x.name == product_name}
     end
 
-    def can_update product_name
-      product = Product.where(name: product_name).first
-
-      return product.nil? || product.id == @product.id
+    def can_update product
+      return Product.where("upper(name) like upper(?) AND id <> ?", "%#{product.name}%", product.id).length == 0
     end
 
     def check_user_permission

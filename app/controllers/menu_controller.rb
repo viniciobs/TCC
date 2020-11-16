@@ -1,8 +1,8 @@
 class MenuController < ApplicationController
 	before_action :check_user_permission, except: [:inactive]
 	
-	def index
-		@categories = ProductCategory.all	
+	def index		
+		@categories = ProductCategory.all		
   	end
   	
   	private 
