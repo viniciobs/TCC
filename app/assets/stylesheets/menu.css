@@ -16,7 +16,7 @@
 }
 
 .food-menu .item a:hover,
-.food-menu .item a.active
+.food-menu .item.active a
 {
 	color: #fff;
 	background-color: #bc821d;

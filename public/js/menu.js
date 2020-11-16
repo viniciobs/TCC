@@ -12,13 +12,13 @@ var swiper = new Swiper('.swiper-container',
 });
 
 
-$('.swiper-wrapper .item a').on('click', function(e)
+$('.food-menu .item a').on('click', function(e)
 {    
     e.preventDefault();
 
-    $('.swiper-wrapper .item a').each(function(){
+    $('.food-menu .item').each(function(){
         $(this).removeClass('active');
     });
 
-    $(this).addClass('active');
+    $(this).parent().addClass('active');
 }); 
