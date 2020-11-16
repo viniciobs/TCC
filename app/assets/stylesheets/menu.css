@@ -37,6 +37,7 @@ h3.title
 {
     border-bottom: 1px dashed #707070;
     padding-bottom: 0.5em;
+    text-align: left;
 }
 
 .price
@@ -62,12 +63,18 @@ h3.title
     height: 12px;
 }
 
-@media screen and (max-width:767px)
+@media screen and (max-width: 992px)
 {
-	.menu-item
+	.food-menu .item.active .menu-item
 	{
-        margin-bottom: 7em;       
-	}   
+		width: 300%;
+	    left: -100%;	    
+	}
+}
+
+@media screen and (max-width: 766px)
+{
+	.img-thumbnail { float:left; }
 }
 
 @media screen and (max-width:500px)
