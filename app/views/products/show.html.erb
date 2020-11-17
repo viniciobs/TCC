@@ -36,7 +36,7 @@
 
 <p>
   <strong>Imagem:</strong>
-  <%= image_tag(@product.image.thumb.url, alt: 'Imagem') %>
+  <%= image_tag("data:image/jpeg;base64,#{@product.image}", alt: @product.name, class: "short") %>
 </p>
 
 </div>

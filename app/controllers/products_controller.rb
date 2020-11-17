@@ -28,9 +28,10 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create    
-    @product = Product.new(product_params)
+    @product = Product.new(product_params)    
+    @product.image = Base64.encode64(File.read(request[:product][:image].tempfile))
 
-    if @product.image.url.nil?
+    if @product.image.nil?
       respond_to do |format|
         flash.now[:notice] = "É necessário incluir uma imagem para o produto."
         format.html { render :edit }      
