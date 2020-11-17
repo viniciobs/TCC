@@ -30,8 +30,8 @@
 </p>
 
 <p>
-  <strong>Descrição:</strong>
-  <%= @product.description %>
+  <strong>Descrição:</strong><br>
+  <%= @product.description.gsub(/\n/, '<br />').html_safe %>
 </p>
 
 <p>
