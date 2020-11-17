@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :orders
   get 'menu', to: 'menu#index' 
 
   get 'rates_list', to: 'rates#list'

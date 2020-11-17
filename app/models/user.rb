@@ -10,7 +10,9 @@ class User < ApplicationRecord
   	scope :filter_by_type, -> (type) { where user_type: type }    
 	  scope :filter_by_name, -> (name) { where("upper(name) like upper(?) OR upper(access) like (?)", "%#{name}%", "%#{name}%") }
     scope :filter_by_scheduled_today, -> { where scheduled_today: true }
+    scope :filter_status, -> (status) { where active: status.to_i }
 
+    has_one :order, dependent: :destroy
     has_many :songs, dependent: :destroy
     has_many :rates, dependent: :destroy
     has_many :artist_suggestions, dependent: :destroy

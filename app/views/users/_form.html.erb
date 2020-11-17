@@ -36,11 +36,21 @@
 </div>
 </div>
 
-  <div class="form-row">    
+
+<div id="table_num" class="form-row <% if user.user_type == "manager" %>hidden<%end%>">
+  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="field">    
+      <%= form.label :table_num, "Mesa" %>
+      <%= form.number_field :table_num, class: "form-control" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-row">    
 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="field">
     <%= form.label :user_type, "Tipo de usuário" %>
-    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer']], :selected => user.user_type), {}, { class: "form-control", onchange: 'display_scheduled_today(this)'})  %>
+    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer']], :selected => user.user_type), {}, { class: "form-control", onchange: 'display_or_hide_fields(this)'})  %>
   </div>
 </div>
 </div>
@@ -54,15 +64,34 @@
 <% end %>
 
 <script type="text/javascript">
-function display_scheduled_today(obj)
-{
-  if (obj.value == 'musician')
+  function display_or_hide_fields(obj)
   {
-    $('#schedule-today').removeClass('hidden');
+      handle_scheduled_today(obj);
+      handle_table_num(obj);
+
   }
-  else
+
+  function handle_scheduled_today(obj)
   {
-    $('#schedule-today').addClass('hidden');
+    if (obj.value == 'musician')
+    {
+      $('#schedule-today').removeClass('hidden');
+    }
+    else
+    {
+      $('#schedule-today').addClass('hidden');
+    }
   }
-}
+
+  function handle_table_num(obj)
+  {
+    if (obj.value != 'manager')
+    {
+      $('#table_num').removeClass('hidden');
+    }
+    else
+    {
+      $('#table_num').addClass('hidden');
+    }
+  }
 </script>
