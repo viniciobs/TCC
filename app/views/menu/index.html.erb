@@ -34,7 +34,7 @@
                                     <%= image_tag(product.image.menu_thumb.url, alt: product.name, class: "img-thumbnail") %>                                
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">                                   
-                                    <p><%= product.description %></p>
+                                    <p><%= product.description.gsub(/\n/, '<br />').html_safe %></p>
                                     <div class="input-group item-quantity">
                                       <span class="minus input-group-addon">-</span>
                                       <input type="text" class="form-control" placeholder="0">
