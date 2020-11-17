@@ -188,6 +188,9 @@ table td a { color: #000; }
 .table .icons
 {
     min-width: 70px;
+    font-size: 20px;
+    letter-spacing: 5px;
+    white-space: nowrap;
 }
 
 .pagination .current
