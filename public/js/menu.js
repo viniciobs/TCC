@@ -16,4 +16,18 @@ var swiper = new Swiper('.swiper-container',
 
 $('.food-menu .item a').click(function(e) { e.preventDefault(); });
 
+$(".item-quantity span").click(function()
+{
+    var input = $(this).parent('.item-quantity').find('input');
+
+    if ($(this).hasClass('plus'))
+    {
+        input.val(parseInt(input.val()) + 1); 
+    }
+    else if (input.val() > 0)
+    {
+        input.val(parseInt(input.val()) - 1);    
+    }
+});
+
 
