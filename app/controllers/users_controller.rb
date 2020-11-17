@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index  
-    @users = User.all
+    @users = User.where('id<>?', current_user.id)
     @users = @users.filter_by_type(params[:type]) if params[:type].present?
     @users = @users.filter_by_name(params[:name]) if params[:name].present?
     @users = @users.filter_by_scheduled_today if params[:scheduled_today].present?
