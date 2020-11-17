@@ -1,7 +1,7 @@
 <%= form_with(model: order, local: true) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <h2><%= pluralize(order.errors.count, "erro") %>:</h2>
 
       <ul>
         <% order.errors.full_messages.each do |message| %>
@@ -11,17 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+  <div class="form-row">
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="field">
+        <%= form.label :user_id, "Id do usuário" %>        
+        <%= form.number_field :user_id, required: true, value: params[:user], class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :table_num %>
-    <%= form.number_field :table_num %>
+  <div class="form-row">
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="field">
+        <%= form.label :table_num, "Número da mesa" %>
+        <%= form.number_field :table_num, required: true, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-row">
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 actions">
+      <%= form.submit "Criar", class: "btn btn-orange right" %>
+      <%= link_to 'Cancelar', orders_path, class: "right btn btn-orange" %>
+    </div>
   </div>
 <% end %>

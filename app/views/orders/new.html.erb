@@ -1,5 +1,12 @@
-<h1>New Order</h1>
+<% @page_title =  "Cadastro de comanda" %>
 
-<%= render 'form', order: @order %>
+<div class="container">
+	<div class="page-header" align="center">
+	    <h1>Gerenciamento de comandas<br><small>Cadastre uma nova comanda</small></h1>
+	</div>
 
-<%= link_to 'Back', orders_path %>
+	<p id="notice"><%= notice %></p>
+
+	<%= render 'form', order: @order %>
+
+</div>

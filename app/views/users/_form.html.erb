@@ -18,15 +18,6 @@
 </div>
   </div>
 
-<div class="form-row">    
-<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="field">    
-    <%= form.label :active, "Ativo?" %>
-    <%= form.check_box :active, class: "form-check-input" %>
-  </div>
-</div>
-</div>
-
 <div id="schedule-today" class="form-row <% if user.user_type != "musician" %>hidden<%end%>">    
 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="field">    
@@ -36,21 +27,11 @@
 </div>
 </div>
 
-
-<div id="table_num" class="form-row <% if user.user_type == "manager" %>hidden<%end%>">
-  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-    <div class="field">    
-      <%= form.label :table_num, "Mesa" %>
-      <%= form.number_field :table_num, class: "form-control" %>
-    </div>
-  </div>
-</div>
-
 <div class="form-row">    
 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="field">
     <%= form.label :user_type, "Tipo de usuário" %>
-    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer']], :selected => user.user_type), {}, { class: "form-control", onchange: 'display_or_hide_fields(this)'})  %>
+    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer']], :selected => user.user_type), {}, { class: "form-control", onchange: 'handle_scheduled_today(this)'})  %>
   </div>
 </div>
 </div>
@@ -64,13 +45,7 @@
 <% end %>
 
 <script type="text/javascript">
-  function display_or_hide_fields(obj)
-  {
-      handle_scheduled_today(obj);
-      handle_table_num(obj);
-
-  }
-
+  
   function handle_scheduled_today(obj)
   {
     if (obj.value == 'musician')
@@ -83,15 +58,4 @@
     }
   }
 
-  function handle_table_num(obj)
-  {
-    if (obj.value != 'manager')
-    {
-      $('#table_num').removeClass('hidden');
-    }
-    else
-    {
-      $('#table_num').addClass('hidden');
-    }
-  }
 </script>

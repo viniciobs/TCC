@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @products = []
   end
 
   # GET /orders/new
@@ -26,9 +27,32 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
+    if @order.user.nil?
+      respond_to do |format|
+        flash.now[:notice] = "O id informado não pertence a nenhum usuário."
+        format.html { render :new }      
+      end
+
+      return
+    end 
+
+    if user_has_order_already
+      respond_to do |format|
+        flash.now[:notice] = "Já existe uma comanda para o usuário: " + @order.user.name + "."
+        format.html { render :new }      
+      end
+
+      return
+    end
+
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+
+        user = @order.user
+        user.active = true
+        user.save
+
+        format.html { redirect_to @order, notice: 'A comanda foi criada com sucesso.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -42,7 +66,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: 'A comanda foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -54,9 +78,13 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    user = @order.user
+    user.active = false
+    user.save
+
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_url, notice: 'Comanda excluída com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -70,5 +98,9 @@ class OrdersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def order_params
       params.require(:order).permit(:user_id, :table_num)
+    end
+
+    def user_has_order_already
+      return Order.where('id<>? AND user_id=?', @order.id, @order.user.id).any?
     end
 end

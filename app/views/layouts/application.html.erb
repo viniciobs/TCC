@@ -56,10 +56,11 @@
               <% if current_user.active? %>
                  
                  <% if current_user.user_type == "manager" %> 
-                     <li><%= link_to 'Produtos', products_path %></li>  
-                     <li><%= link_to 'Categorias de produto', product_categories_path %></li>  
-                     <li><%= link_to 'Estoque', stocks_path %></li> 
-                     <li><%= link_to 'Usuários', users_path, method: :get %></li> 
+                    <li><%= link_to 'Comandas', orders_path %></li>
+                    <li><%= link_to 'Produtos', products_path %></li>  
+                    <li><%= link_to 'Categorias de produto', product_categories_path %></li>  
+                    <li><%= link_to 'Estoque', stocks_path %></li> 
+                    <li><%= link_to 'Usuários', users_path, method: :get %></li> 
                  <%end%>
 
                 <% if current_user.user_type == "musician" %>

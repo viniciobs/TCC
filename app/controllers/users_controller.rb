@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index  
-    @users = User.where('id<>?', current_user.id)
+    @users = User.all
     @users = @users.filter_status(params[:status]) if params[:status].present?
     @users = @users.filter_by_type(params[:type]) if params[:type].present?
     @users = @users.filter_by_name(params[:name]) if params[:name].present?
@@ -29,10 +29,14 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
-  def update      
- 
+  def update          
+
     respond_to do |format|
       if @user.update(user_params)
+        if @user.user_type != 'musician' 
+          @user.scheduled_today = false
+          @user.save
+        end
 
         if @user.scheduled_today
           User.all.filter_by_scheduled_today.where.not(id: @user.id).each do |u|
@@ -40,8 +44,6 @@ class UsersController < ApplicationController
             u.save 
           end
         end
-
-        create_order(@user) if @user.active?
 
         format.html { redirect_to @user, notice: @user.name + ' atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @user }
@@ -65,14 +67,6 @@ class UsersController < ApplicationController
 
   private
 
-    def create_order user
-      order = Order.new
-      order.user_id = user.id
-      order.table_num = params[:table_num]
-
-      order.save
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_user      
       @user = User.find(params[:id]) 
@@ -85,5 +79,13 @@ class UsersController < ApplicationController
 
      def check_user_permission
       render_404 if !current_user.nil? && current_user.user_type != 'manager'
+    end
+
+    def create_order user
+      order = Order.new
+      order.user_id = user.id
+      order.table_num = params[:table_num]
+
+      order.save
     end
 end

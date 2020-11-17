@@ -230,6 +230,14 @@ img.short
     display: block;
 }
 
+h2.order
+{
+    background: #ffa61a;
+    border-radius: 4px;
+    padding: 5px 15px;
+    color: #fff;
+}
+
 footer
 {
 	color: #fff;
