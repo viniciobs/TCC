@@ -15,16 +15,21 @@
 	display: block;
 }
 
-.food-menu .item a:hover,
-.food-menu .item.active a
+.food-menu .item a:hover 
+{ 
+	color: #fff;
+	background: rgba(188, 130, 29, 0.7); 	
+}
+
+.food-menu .item.swiper-slide-active a
 {
 	color: #fff;
 	background-color: #bc821d;
 }
 
-.food-menu .item:not(.active) .menu-item { display: none; }
+.food-menu .item:not(.swiper-slide-active) .menu-item { display: none; }
 
-.food-menu .item.active .menu-item
+.food-menu .item.swiper-slide-active .menu-item
 {
 	width: 200%;
     left: -50%;
@@ -36,7 +41,7 @@
     border-bottom: 1px dashed #707070;
     text-align: left;
     padding-left: 1em;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
 }
 
 .price
