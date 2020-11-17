@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :check_user_permission
 
   # GET /orders
   # GET /orders.json
@@ -102,5 +103,10 @@ class OrdersController < ApplicationController
 
     def user_has_order_already
       return Order.where('id<>? AND user_id=?', @order.id, @order.user.id).any?
+    end
+
+    def check_user_permission
+      render_404 if current_user.nil? || !current_user.active? 
+      render_404 if !@order.nil? && current_user.user_type != 'manager' && current_user.id != @order.user.id 
     end
 end

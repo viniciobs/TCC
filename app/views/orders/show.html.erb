@@ -37,15 +37,13 @@
 		</table>	
 
 		 <% if @products.empty? %>
-		  <p class="text-center">Não há nenhum pedido adicionado a comanda.</p>
+		  	<p class="text-center"><%= @order.user.id ==  current_user.id ? 'Sua' : 'Esta' %> comanda está vazia.</p>
 		  <%end%>
 	</div>
 
 	<% if @order.user.id ==  current_user.id %>
 		<%= link_to 'Adicionar itens', menu_path, class: "btn btn-orange right" %>
 	<%end%>
-
-	<%= link_to 'Voltar', orders_path, class: "btn btn-orange right" %>
 
 	<br>
 </div>
