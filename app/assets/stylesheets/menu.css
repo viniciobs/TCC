@@ -85,6 +85,12 @@
 
 @media screen and (max-width: 767px)
 {
+	.title h3
+	{
+		font-size: 14px;
+		font-weight: bold;
+	}
+
 	.food-menu .item.swiper-slide-active .menu-item
 	{
 		width: 300%;
