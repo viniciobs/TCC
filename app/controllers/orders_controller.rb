@@ -5,9 +5,15 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
-    @orders = @orders.filter_by_user_name(params[:user_name]) if params[:user_name].present?
+    @orders = Order.all  
     @orders = @orders.filter_by_table_num(params[:table_num]) if params[:table_num].present?
+
+    if params[:user_name].present?
+      @users = User.all 
+      @users = @users.filter_by_name(params[:user_name])
+
+      @orders = @orders.where('user_id IN (?)', @users.select(:id))
+    end
   end
 
   # GET /orders/1
