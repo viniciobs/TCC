@@ -55,7 +55,7 @@
   <% if @user.order.nil? %>
     <%= link_to 'Criar comanda', new_order_path(user: @user) , class: "btn btn-orange right"  %>
   <%else%>
-    <%= link_to 'Ver comanda', users_path , class: "btn btn-orange right"  %>
+    <%= link_to 'Ver comanda', @user.order, class: "btn btn-orange right"  %>
   <%end%>
 <%end%>
 
