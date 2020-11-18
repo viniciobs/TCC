@@ -41,6 +41,42 @@ $('.add').click(function()
         data : form.serialize(),
         encode : true
     }); 
+
+    notify('Coca-cola 300ml', true);
 });
+
+function notify(product, success)
+{
+    $.notify(
+    { 
+        message: success ? product + ' foi adicionado ao carrinho' : 'Não foi possível adicionar ' + product , 
+        icon: success ? 'glyphicon glyphicon-ok' : 'glyphicon glyphicon-remove',
+    },
+    {
+        element: 'body',  
+        position: null,      
+        type: success ? 'success' : 'warning',
+        allow_dismiss: true,
+        showProgressbar: false,
+        placement: {
+            from: "top",
+            align: "right"
+        },
+        offset: 10,
+        spacing: 10,
+        z_index: 1031,
+        delay: 3000,
+        timer: 1000,
+        animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+        },
+        icon_type: 'class',
+        template: '<div class="btn btn-orange"><button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button><br><h4><span data-notify="icon"></span> {2}</h4></div>'               
+    });
+}
+
+
+
 
 

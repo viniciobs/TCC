@@ -17,7 +17,7 @@
       <%= stylesheet_link_tag 'rating', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
 
-    <% if request.path == menu_path %>
+    <% if request.path == menu_path %>      
       <link rel="stylesheet" href="../../../lib/swiper-bundle/swiper-bundle.min.css">
       <%= stylesheet_link_tag 'menu', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%end%>
@@ -95,8 +95,8 @@
                 <p>© 2020 - Conexão Boteco</p>
             </footer>
         </div>
-    </div>        
-    
+    </div>            
+
     <script type="text/javascript" src="../../../lib/jquery/jquery.3.5.1.min.js"></script>
     <script type="text/javascript" src="../../../js/bigslide.min.js"></script>
    
@@ -105,9 +105,11 @@
        <script type="text/javascript" src="../../../js/live-music.js"></script>
     <% end %> 
 
-    <% if request.path == menu_path %>
+    <% if request.path == menu_path %> 
+      <script type="text/javascript" src="../../../lib/bootstrap/bootstrap.min.js"></script>
+      <script type="text/javascript" src="../../../lib/bootstrap/notify.min.js"></script>
       <script type="text/javascript" src="../../../lib/swiper-bundle/swiper-bundle.min.js"></script>
-      <script type="text/javascript" src="../../../js/menu.js"></script>           
+      <script type="text/javascript" src="../../../js/menu.js"></script>                 
     <% end %> 
 
     <script>
