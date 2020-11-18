@@ -6,6 +6,8 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    @orders = @orders.filter_by_user_name(params[:user_name]) if params[:user_name].present?
+    @orders = @orders.filter_by_table_num(params[:table_num]) if params[:table_num].present?
   end
 
   # GET /orders/1
@@ -108,5 +110,6 @@ class OrdersController < ApplicationController
     def check_user_permission
       render_404 if current_user.nil? || !current_user.active? 
       render_404 if !@order.nil? && current_user.user_type != 'manager' && current_user.id != @order.user.id 
+      render_404 if request.path == orders_path && current_user.user_type != 'manager'
     end
 end

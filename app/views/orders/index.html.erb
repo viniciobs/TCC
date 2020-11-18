@@ -11,18 +11,12 @@
   <div class="filter">
     <%= form_tag(orders_path, :method => :get) do %>    
       <div class="form-row">
-        <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12">
           <%= text_field_tag 'user_name', params[:user_name], :class => "form-control", :placeholder => "Buscar por cliente" %>
         </div>
-         <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12">
-          <%= text_field_tag 'product_name', params[:product_name], :class => "form-control", :placeholder => "Buscar por poduto" %>
-        </div>
-        <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-6">
-          <%= number_field_tag 'min_quantity', params[:min_quantity], :class => "form-control", :placeholder => "Qt. mínima" %>
-        </div>
-        <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-6">
-          <%= text_field_tag 'max_quantity', params[:max_quantity], :class => "form-control", :placeholder => "Qt. máxima" %>
-        </div>       
+         <div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12">
+          <%= text_field_tag 'table_num', params[:table_num], :class => "form-control", :placeholder => "Buscar por mesa" %>
+        </div>    
         <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12 actions">
            <%= button_tag :class => "btn btn-orange" do %>            
            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
