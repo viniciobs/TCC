@@ -45,5 +45,9 @@
 		<%= link_to 'Adicionar itens', menu_path, class: "btn btn-orange right" %>
 	<%end%>
 
+	<% if current_user.user_type ==  'manager' %>
+		<%= link_to 'Fechar comanda', @order, method: :delete, data: { confirm: 'Tem certeza que deseja fechar a comanda?' }, class: "btn btn-orange right" %>
+	<%end%>
+
 	<br>
 </div>
