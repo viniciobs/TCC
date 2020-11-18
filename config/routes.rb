@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :orders
+
+  post 'orders_handle', to: 'orders#handle'
+  
   get 'menu', to: 'menu#index' 
 
   get 'rates_list', to: 'rates#list'

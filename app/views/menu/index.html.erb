@@ -36,7 +36,7 @@
                         <%end%>
 
                         <% category.products.each do |product| %>                            
-                            <div class="row menu-item" data-product="<%= product.id %>">
+                            <div class="row menu-item">
                                 <div class="title">
                                     <h3>
                                         <%= product.name %> <span class="price">R$ <%= number_with_precision(product.price, precision: 2, separator: ',') %></span>
@@ -48,12 +48,16 @@
                                 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">                                   
                                     <p><%= product.description.gsub(/\n/, '<br />').html_safe %></p>
                                     <br>
-                                    <div class="input-group item-quantity">
-                                      <span class="minus input-group-addon">-</span>
-                                      <input type="text" class="form-control" value="0" readonly>
-                                      <span class="plus input-group-addon">+</span>
-                                    </div>  
-                                    <span class="left add btn btn-orange">Adicionar</span>                                       
+                                    <%= form_tag(orders_handle_path, :method => :post) do %>                    
+                                        <%= hidden_field_tag 'id', @order.id %>         
+                                        <%= hidden_field_tag 'product_id', product.id %>                                   
+                                        <div class="input-group item-quantity">
+                                            <span class="minus input-group-addon">-</span>
+                                            <%= text_field_tag 'quantity', "0", class: "form-control", readonly: true %>                                            
+                                            <span class="plus input-group-addon">+</span>
+                                        </div>       
+                                        <span class="left add btn btn-orange" data-product="<%= product.id %>">Adicionar</span>                 
+                                    <%end%>                                      
                                 </div>                   
                             </div>
                         <%end%>                        
@@ -63,4 +67,4 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-</div>
+</div>          
