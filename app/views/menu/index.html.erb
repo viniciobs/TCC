@@ -36,7 +36,7 @@
                         <%end%>
 
                         <% category.products.each do |product| %>                            
-                            <div class="row menu-item">
+                            <div class="row menu-item" data-product="<%= product.id %>">
                                 <div class="title">
                                     <h3>
                                         <%= product.name %> <span class="price">R$ <%= number_with_precision(product.price, precision: 2, separator: ',') %></span>
@@ -47,11 +47,13 @@
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">                                   
                                     <p><%= product.description.gsub(/\n/, '<br />').html_safe %></p>
+                                    <br>
                                     <div class="input-group item-quantity">
                                       <span class="minus input-group-addon">-</span>
                                       <input type="text" class="form-control" value="0" readonly>
                                       <span class="plus input-group-addon">+</span>
-                                    </div>                                                                                      
+                                    </div>  
+                                    <span class="left add btn btn-orange">Adicionar</span>                                       
                                 </div>                   
                             </div>
                         <%end%>                        
