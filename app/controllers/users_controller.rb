@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index  
-    @users = User.all
+    @users = User.all.order(:name)
     @users = @users.filter_status(params[:status]) if params[:status].present?
     @users = @users.filter_by_type(params[:type]) if params[:type].present?
     @users = @users.filter_by_name(params[:name]) if params[:name].present?

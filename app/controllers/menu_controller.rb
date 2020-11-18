@@ -2,7 +2,7 @@ class MenuController < ApplicationController
 	before_action :check_user_permission, except: [:inactive]
 	
 	def index		
-		@categories = ProductCategory.all
+		@categories = ProductCategory.all.order(:name)
 		@order = current_user.order
 	end
   	
