@@ -110,8 +110,8 @@ class OrdersController < ApplicationController
     end
 
     def user_has_order_already
-      return Order.where('id<>? AND user_id=?', @order.id, @order.user.id).any?
-    end
+      return Order.where('user_id=?', @order.user.id).any?
+    end    
 
     def check_user_permission
       render_404 if current_user.nil? || !current_user.active? 

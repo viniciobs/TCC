@@ -43,7 +43,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.user.name %></td>
+        <td title="<%= order.user.id %>"><%= order.user.name %></td>
         <td class="number"><%= order.table_num %></td>
         <td class="number">qtd</td>
         <td class="number">Total</td>
