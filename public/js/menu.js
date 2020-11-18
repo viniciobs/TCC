@@ -34,16 +34,29 @@ $('.add').click(function()
 {
    var form = $(this).closest("form");
 
+   if (!hasQuantity(form)) return false;
+
+   var product = $(this).data("product");
+
     $.ajax(
     {
         type : 'POST', 
         url : form.attr('action'),
         data : form.serialize(),
-        encode : true
-    }); 
-
-    notify('Coca-cola 300ml', true);
+        encode : true,
+        success: function (data) 
+        { 
+            notify(product, true); 
+            $(form)[0].reset();
+        },
+        error: function (jqXHR, textStatus, errorThrown) { notify(product, false); }
+    });
 });
+
+function hasQuantity(form)
+{
+    return form.find('input:visible').val() > 0;
+}
 
 function notify(product, success)
 {
