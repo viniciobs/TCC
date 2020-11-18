@@ -45,6 +45,16 @@ class UsersController < ApplicationController
           end
         end
 
+        if @user.user_type == 'manager'
+          @user.active = true
+          @user.save
+        else
+          if @user.order.nil?
+            @user.active = false
+            @user.save
+          end
+        end
+
         format.html { redirect_to @user, notice: @user.name + ' atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @user }
       else
