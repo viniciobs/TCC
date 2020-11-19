@@ -32,7 +32,7 @@
 			        <td><%= item.quantity %></td>
 			        <td><%= number_with_precision(product.price, precision: 2, separator: ',') %></td>
 					<td class="right">
-						<% if item.status == 'can_cancel' %>
+						<% if item.status == 'can_cancel' && @order.user.id ==  current_user.id %>
 							<%= link_to 'Remover', order_items_path(id: item.id), method: :delete, class: 'btn btn-orange remove', data: { confirm: 'Tem certeza que deseja remover a pedido?' } %>								  		
 				  		<% end %>
 		          	</td>
@@ -41,7 +41,7 @@
 		  </tbody>
 		</table>	
 
-		 <% if @order.order_items.nil? %>
+		 <% if @order.order_items.empty? %>
 		  	<p class="text-center"><%= @order.user.id ==  current_user.id ? 'Sua' : 'Esta' %> comanda está vazia.</p>
 		  <%end%>
 	</div>
