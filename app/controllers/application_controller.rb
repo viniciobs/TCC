@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
 	    	return stocks_path
 	 	elsif resource.user_type == 'musician'
 	    	return songs_path
+	    elsif resource.user_type == 'kitchen'
+	    	return kitchen_path
 		else
 			return menu_path
 		end

@@ -45,7 +45,7 @@ class UsersController < ApplicationController
           end
         end
 
-        if @user.user_type == 'manager'
+        if @user.user_type == 'manager' || @user.user_type == 'kitchen'
           @user.active = true
           @user.save
         else

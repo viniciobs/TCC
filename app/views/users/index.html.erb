@@ -15,7 +15,7 @@
         <%= text_field_tag 'name', params[:name], :class => "form-control", :placeholder => "Buscar por nome ou login" %>
       </div>
        <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12">
-         <%= select_tag(:type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 0], ['Artista', 1], ['Cliente', 2]], params[:type]), class: "form-control")  %>
+         <%= select_tag(:type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 0], ['Artista', 1], ['Cliente', 2], ['Cozinha', 3]], params[:type]), class: "form-control")  %>
       </div>
       <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12">
          <%= select_tag(:status, options_for_select([['-- Selecione o status --', nil], ['Inativo', 0], ['Ativo', 1]], params[:status]), class: "form-control")  %>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable  	
 
-  	enum user_type: { manager: 0, musician: 1, customer: 2 }
+  	enum user_type: { manager: 0, musician: 1, customer: 2, kitchen: 3 }
 
   	scope :filter_by_type, -> (type) { where user_type: type }    
 	  scope :filter_by_name, -> (name) { where("upper(name) like upper(?) OR upper(access) like (?)", "%#{name}%", "%#{name}%") }
@@ -30,6 +30,8 @@ class User < ApplicationRecord
         return "Admin"
       elsif self.user_type == "musician"
         return "Artista"
+      elsif self.user_type == "kitchen"
+        return "Cozinha"
       else 
         return "Cliente"
       end                
@@ -40,6 +42,8 @@ class User < ApplicationRecord
         return 0
       elsif self.user_type == "musician"
         return 1
+      elsif self.user_type == "kitchen"
+        return 3
       else 
         return 2
       end                

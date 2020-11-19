@@ -31,7 +31,7 @@
 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="field">
     <%= form.label :user_type, "Tipo de usuário" %>
-    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer']], :selected => user.user_type), {}, { class: "form-control", onchange: 'handle_scheduled_today(this)'})  %>
+    <%= form.select(:user_type, options_for_select([['-- Selecione o tipo --', nil], ['Admin', 'manager'], ['Artista', 'musician'], ['Cliente', 'customer'], ['Cozinha', 'kitchen']], :selected => user.user_type), {}, { class: "form-control", onchange: 'handle_scheduled_today(this)'})  %>
   </div>
 </div>
 </div>
