@@ -12,6 +12,6 @@ function updateStatus(form)
         url : form.attr('action'),
         data : form.serialize(),
         encode : true,
-        always: setInterval(function(){ document.location.reload(true); }, 3000)     
+        always: setInterval(function(){ document.location.reload(true); }, 1000)     
     });
 }

@@ -24,8 +24,12 @@ class OrderItemsController < ApplicationController
 
   def destroy
     order = @item.order
-    
-    @item.delete
+    stock = Stock.where(product_id: @item.product_id).first
+
+    ActiveRecord::Base.transaction do          
+      stock.update!(quantity: stock.quantity + @item.quantity)
+      @item.delete      
+    end     
      
     respond_to do |format|
       format.html { redirect_to order, notice: 'Pedido removido com sucesso.' }
