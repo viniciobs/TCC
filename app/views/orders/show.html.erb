@@ -9,8 +9,10 @@
 
 	<div class="edit">
 
-		<h2 class="right order">Mesa <small><%= @order.table_num %></small></h2>	
-
+		<div class="right">
+			<h2 class="order">Mesa <small><%= @order.table_num %></small></h2>	
+			<span class="right"><%= @order.user.name %></span>
+		</div>		
 
 		<table class="table table-striped">
 		  <thead>
@@ -23,11 +25,12 @@
 		  </thead>
 
 		  <tbody>
-		    <% @products.each do |prod| %>
+		    <% @order.order_items.each do |item| %>
+		    <% product = Product.find(item.product_id) %>
 		      	<tr>
-			        <td><%= prod.name %></td>
-			        <td>qt</td>
-			        <td>34,00</td>
+			        <td><%= product.name %></td>
+			        <td><%= item.quantity %></td>
+			        <td><%= number_with_precision(product.price, precision: 2, separator: ',') %></td>
 					<td class="icons">
 				  	Remover item da comanda
 		          	</td>
@@ -36,7 +39,7 @@
 		  </tbody>
 		</table>	
 
-		 <% if @products.empty? %>
+		 <% if @order.order_items.nil? %>
 		  	<p class="text-center"><%= @order.user.id ==  current_user.id ? 'Sua' : 'Esta' %> comanda está vazia.</p>
 		  <%end%>
 	</div>
