@@ -106,10 +106,17 @@ class OrdersController < ApplicationController
     stock = get_stock(product, quantity)  
 
     render :json => nil, :status => :unprocessable_entity if stock.nil? 
+
+    existent_order = OrderItem.where('order_id=? AND product_id=?', order.id, product.id).first
     
     ActiveRecord::Base.transaction do          
       stock.update!(quantity: stock.quantity - quantity)
-      OrderItem.create!(product_id: product.id, order_id: order.id, quantity: quantity)          
+
+      if existent_order.nil?
+        OrderItem.create!(product_id: product.id, order_id: order.id, quantity: quantity)   
+      else
+        existent_order.update!(quantity: existent_order.quantity + quantity)
+      end       
     end   
 
     render :json => nil, :status => :ok  
