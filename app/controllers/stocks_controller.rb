@@ -64,9 +64,19 @@ class StocksController < ApplicationController
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy    
-    @stock.delete
-    
+
     @product = Product.where(id: @stock.product_id).first
+
+    if @product.has_order_associated
+      respond_to do |format|
+        format.html { redirect_to stocks_url, notice: 'Não é possível remover o estoque pois o produto está associado a uma comanda.' }
+        format.json { head :no_content }
+      end
+      
+      return 
+    end
+
+    @stock.delete    
     @product.delete
 
     respond_to do |format|

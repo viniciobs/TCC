@@ -97,6 +97,16 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+
+    if @product.has_order_associated 
+      respond_to do |format|
+        format.html { redirect_to products_url, notice: @product.name + ' está associado a uma comanda não é possível removê-lo no momento.' }
+        format.json { head :no_content }
+      end
+
+      return
+    end
+
     @product.destroy   
         
     respond_to do |format|

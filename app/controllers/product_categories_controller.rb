@@ -65,7 +65,14 @@ class ProductCategoriesController < ApplicationController
   # DELETE /product_categories/1.json
   def destroy    
     
+    if has_order_associated
+      respond_to do |format|
+        format.html { redirect_to product_categories_url, notice: 'Não é possível remover a categoria pois há produtos da mesma que estão associados a uma comanda.' }
+        format.json { head :no_content }
+      end 
 
+      return
+    end
     message = @product_category.destroy ? 'A categoria ' +  @product_category.name + ' foi removida com sucesso.' : 'Ocorreram erros que impediram a categoria de ser removida.'
 
     respond_to do |format|
@@ -91,5 +98,15 @@ class ProductCategoriesController < ApplicationController
 
     def check_user_permission
       render_404 if !current_user.nil? && current_user.user_type != 'manager'
+    end
+    
+    def has_order_associated
+      return false if @product_category.products.empty?
+
+      @product_category.products.each do |product|
+        return true if product.has_order_associated
+      end
+
+      return false
     end
 end
