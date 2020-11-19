@@ -40,11 +40,14 @@
 </p>
 
 </div>
-
 <br>
 <%= link_to "Inventariar", edit_stock_path(Stock.where(product_id: @product.id).first.id), class: "left link" %> 
-
-<%= link_to 'Incluir novo produto', new_product_path, class: "btn btn-orange right" %>
-<%= link_to 'Voltar', products_path, class: "btn btn-orange left" %>
+<br><br>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <%= link_to 'Incluir novo produto', new_product_path, class: "btn btn-orange right" %>
+  <%= link_to 'Voltar', products_path, class: "btn btn-orange left" %> 
+  </div>
+</div>
 
 </div>
