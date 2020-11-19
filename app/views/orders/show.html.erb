@@ -31,8 +31,10 @@
 			        <td><%= product.name %></td>
 			        <td><%= item.quantity %></td>
 			        <td><%= number_with_precision(product.price, precision: 2, separator: ',') %></td>
-					<td class="icons">
-				  	Remover item da comanda
+					<td class="right">
+						<% if item.status == 'can_cancel' %>
+				  			<span class="btn btn-orange remove">Remover</span>
+				  		<% end %>
 		          	</td>
 		      	</tr>		    	
 	      	<% end %>

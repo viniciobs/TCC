@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_items, only: [:finish]
+  before_action :set_items, only: [:finish, :alter_item_state]
   before_action :check_user_permission
 
   def index
@@ -14,8 +14,12 @@ class OrderItemsController < ApplicationController
 
   # Este método é utilizada para indicar que o pedido está sendo preparado ou já está pronto e não pode ser cancelado
   def alter_item_state
-    @item.can_cancel = false
-    @item.save
+    status = params[:status].to_i
+
+    if status>=0 && status<=2
+      @item.status = status
+      @item.save
+    end
   end
 
   private

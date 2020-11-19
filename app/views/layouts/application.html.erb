@@ -111,6 +111,10 @@
       <script type="text/javascript" src="../../../js/menu.js"></script>                 
     <% end %> 
 
+      <% if request.path == kitchen_path %>
+        <script type="text/javascript" src="../../../js/kitchen.js"></script>       
+      <% end %> 
+
     <script>
         $(document).ready(function() {
             $('.menu-link').bigSlide();

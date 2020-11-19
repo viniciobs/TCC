@@ -18,6 +18,15 @@ a:hover
     text-decoration: none;
 }
 
+.add,
+.add:hover,
+.remove,
+.remove:hover
+{
+    margin-top: 5px;
+    padding: 2px 28px;
+}
+
 table td a { color: #000; }
 
 #menu { color: #fff; }
@@ -154,7 +163,8 @@ table td a { color: #000; }
 }
 
 .table .icon,
-.edit .icon
+.edit .icon,
+.bi-toggle-off
 {
     cursor: pointer;
 }
