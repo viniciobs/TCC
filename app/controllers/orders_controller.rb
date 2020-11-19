@@ -99,7 +99,21 @@ class OrdersController < ApplicationController
   end
 
 
-  def handle
+  def handle    
+    order = Order.find(params[:id])
+    product = Product.find(params[:product_id])
+    quantity = params[:quantity].to_i
+
+    stock = get_stock(product, quantity)  
+
+    render :json => nil, :status => :unprocessable_entity if stock.nil? 
+    
+    ActiveRecord::Base.transaction do          
+      stock.update!(quantity: stock.quantity - quantity)
+      OrderItem.create!(product_id: product.id, order_id: order.id, quantity: quantity)          
+    end   
+
+    render :json => nil, :status => :ok  
   end
 
   private
@@ -115,7 +129,11 @@ class OrdersController < ApplicationController
 
     def user_has_order_already
       return Order.where('user_id=?', @order.user.id).any?
-    end    
+    end  
+
+    def get_stock product, quantity
+      return Stock.where('product_id=? AND quantity>=?', product, quantity).first
+    end  
 
     def check_user_permission
       render_404 if current_user.nil? || !current_user.active? 
