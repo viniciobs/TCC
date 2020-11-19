@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_items, only: [:finish, :alter_item_state]
+  before_action :set_items, only: [:finish, :alter_item_state, :destroy]
   before_action :check_user_permission
 
   def index
@@ -19,6 +19,17 @@ class OrderItemsController < ApplicationController
     if status>=0 && status<=2
       @item.status = status
       @item.save
+    end
+  end
+
+  def destroy
+    order = @item.order
+    
+    @item.delete
+     
+    respond_to do |format|
+      format.html { redirect_to order, notice: 'Pedido removido com sucesso.' }
+      format.json { render :show, status: :ok, location: order }
     end
   end
 

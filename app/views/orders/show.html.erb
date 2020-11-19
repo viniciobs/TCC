@@ -33,7 +33,7 @@
 			        <td><%= number_with_precision(product.price, precision: 2, separator: ',') %></td>
 					<td class="right">
 						<% if item.status == 'can_cancel' %>
-				  			<span class="btn btn-orange remove">Remover</span>
+							<%= link_to 'Remover', order_items_path(id: item.id), method: :delete, class: 'btn btn-orange remove', data: { confirm: 'Tem certeza que deseja remover a pedido?' } %>								  		
 				  		<% end %>
 		          	</td>
 		      	</tr>		    	

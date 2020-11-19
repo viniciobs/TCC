@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   get 'kitchen', to: 'order_items#index'
   post 'kitchen_alter_item_state', to: 'order_items#alter_item_state'
+  delete 'order_items', to: 'order_items#destroy'
 
   post 'orders_handle', to: 'orders#handle'
+
   
   get 'menu', to: 'menu#index' 
 

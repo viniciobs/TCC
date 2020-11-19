@@ -33,6 +33,7 @@
   <thead>
     <tr>
       <th>Produto</th>
+      <th class="number">Qtde</th>
       <th class="number">Mesa</th>      
       <th class="right">Em preparo?</th>
       <th></th>
@@ -43,6 +44,7 @@
     <% @result.each do |result| %>
       <tr>
         <td><%= result[:product].name %></td>
+        <td class="number"><%= result[:item].quantity %></td>
         <td class="number"><%= result[:table_num] %></td>        
         <td class="icons"> 
           <% if result[:item].can_cancel? %> 
