@@ -85,7 +85,7 @@ function notify(product, success)
             exit: 'animated fadeOutUp'
         },
         icon_type: 'class',
-        template: '<div class="btn btn-orange"><button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button><br><h4><span data-notify="icon"></span> {2}</h4></div>'               
+        template: '<div class="notify"><button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button><br><h4><span data-notify="icon"></span> {2}</h4></div>'               
     });
 }
 

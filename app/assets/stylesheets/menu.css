@@ -65,6 +65,15 @@
     height: 12px;
 }
 
+.notify
+{
+	color: #fff;
+    background-color: #ffa61a;
+    padding: 5px 15px;
+    border-radius: 4px;
+    left: 10px;
+}
+
 @media screen and (min-width: 993px)
 {
 	.food-menu .item.swiper-slide-active .menu-item
