@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :check_user_permission, except: [:inactive]
+  before_action :check_user_permission, except: [:inactive, :access_denied]
 
   # GET /users
   # GET /users.json
