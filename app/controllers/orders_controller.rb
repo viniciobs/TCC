@@ -44,6 +44,15 @@ class OrdersController < ApplicationController
       return
     end 
 
+    if @order.user.user_type != 'customer'
+      respond_to do |format|
+        flash.now[:notice] = "Comandas só estão disponíveis para usuários do tipo cliente."
+        format.html { render :new }      
+      end
+
+      return
+    end
+
     if user_has_order_already
       respond_to do |format|
         flash.now[:notice] = "Já existe uma comanda para o usuário: " + @order.user.name + "."

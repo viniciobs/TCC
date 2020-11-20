@@ -50,14 +50,12 @@ class UsersController < ApplicationController
           end
         end
 
-        if @user.user_type == 'manager' || @user.user_type == 'kitchen'
-          @user.active = true
+        if @user.user_type == 'customer' && @user.order.nil?
+          @user.active = false
           @user.save
         else
-          if @user.order.nil?
-            @user.active = false
-            @user.save
-          end
+            @user.active = true
+            @user.save          
         end
 
         format.html { redirect_to @user, notice: @user.name + ' atualizado com sucesso.' }

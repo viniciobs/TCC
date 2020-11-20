@@ -51,7 +51,7 @@
   <%= link_to 'Visualizar repertório', songs_path(musician: @user), class: "btn btn-orange right" %>
 <% end %>
 
-<% if @user.user_type != 'manager' && @user.user_type != 'kitchen' %>
+<% if @user.user_type == 'customer' %>
   <% if @user.order.nil? %>
     <%= link_to 'Criar comanda', new_order_path(user: @user) , class: "btn btn-orange right"  %>
   <%else%>
