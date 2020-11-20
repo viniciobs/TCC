@@ -3,6 +3,7 @@ class MenuController < ApplicationController
 	
 	def index		
 		@categories = ProductCategory.all.order(:name)
+		@stock = Stock.where('quantity > 0')
 		@order = current_user.order
 	end
   	
