@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   post 'orders_handle', to: 'orders#handle'
 
-  
   get 'menu', to: 'menu#index' 
 
   get 'rates_list', to: 'rates#list'
@@ -33,8 +32,10 @@ Rails.application.routes.draw do
   end
 
   resource :users do
-    get ":id/inactive" => 'users#inactive', as: 'users_inactive'
+    get ":id/inactive" => 'users#inactive', as: 'users_inactive'    
   end
+
+  get 'access-denied' => 'users#access_denied', as: 'users_access_denied'
 
   resources :rates
   resources :songs

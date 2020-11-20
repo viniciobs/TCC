@@ -23,6 +23,11 @@ class UsersController < ApplicationController
   def inactive
   end
 
+  # GET /access-denied
+  # GET /access-denied.json
+  def access_denied
+  end
+
   # GET /users/1/edit
   def edit
   end
@@ -88,7 +93,7 @@ class UsersController < ApplicationController
     end    
 
      def check_user_permission
-      render_404 if !current_user.nil? && current_user.user_type != 'manager'
+      render_access_denied if !current_user.nil? && current_user.user_type != 'manager'
     end
 
     def create_order user

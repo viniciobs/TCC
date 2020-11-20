@@ -44,7 +44,7 @@ class OrderItemsController < ApplicationController
     end
 
     def check_user_permission
-      render_404 if current_user.nil? || !current_user.active? 
-      render_404 if !@order.nil? && (current_user.user_type != 'manager' || current_user.user_type != 'kitchen')       
+      render_access_denied if current_user.nil? || !current_user.active? 
+      render_access_denied if !@order.nil? && (current_user.user_type != 'manager' || current_user.user_type != 'kitchen')       
     end
 end

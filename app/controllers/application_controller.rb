@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def render_access_denied
+		redirect_to users_access_denied_path
+	end
+
 	def render_404
 		respond_to do |format|
 			format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
@@ -42,5 +46,4 @@ class ApplicationController < ActionController::Base
 	def check_user_active				
 		redirect_to get_route(current_user) if !current_user.nil? && ((!current_user.active? && request.path != users_inactive_users_path(id: current_user.id) && request.path != destroy_user_session_path) || current_user.active? && request.path == users_inactive_users_path(id: current_user.id))		
 	end
-
 end

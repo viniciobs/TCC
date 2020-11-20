@@ -9,6 +9,6 @@ class MenuController < ApplicationController
 	private 
 	
 	def check_user_permission
-  		render_404 if !current_user.nil? && current_user.user_type == 'manager'
+  		render_access_denied if !current_user.nil? && current_user.user_type == 'manager'
   	end
 end

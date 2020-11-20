@@ -101,10 +101,10 @@ class SongsController < ApplicationController
     end
 
     def check_specifc_permission
-      render_404 if !current_user.nil? && current_user.user_type != 'musician'
+      render_access_denied if !current_user.nil? && current_user.user_type != 'musician'
     end
 
     def check_shared_permission
-      render_404 if !current_user.nil? && current_user.user_type == 'customer'
+      render_access_denied if !current_user.nil? && current_user.user_type == 'customer'
     end
 end
