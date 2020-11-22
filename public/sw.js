@@ -1,12 +1,10 @@
 var cacheName = "conexao-boteco";
 var filesToCache = [
     "/",
-    "menu.html",
-    "live-music.html",
-    "orders.html",
-    "css/default-style.css",    
-    "css/menu.css",
-    "js/menu.js"
+    "app/views/menu.html.erb",
+    "app/views/rates/dex.html.erb",
+    "app/views/application.html.erb",
+    "app/assets/*"
 ];
 
 self.addEventListener('install', function(e){
